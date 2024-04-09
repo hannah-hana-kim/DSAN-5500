@@ -7,7 +7,12 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
+      - href: review.qmd
+        text: Lit Review
+      - href: main.ipynb
+        text: Linked List
 
 format:
   html:
