@@ -1,5 +1,22 @@
 project:
-  title: "Project"
+  type: website
 
+website:
+  title: "5200 Project"
+  navbar:
+    left:
+      - href: intoduction.qmd 
+        text: Introduction
+      - Project.qmd
+      - icon: github
+        menu:
+          - text: Source Code
+            url: https://github.com/hannah-hana-kim/DSAN-5500
+    background: "#EB8A90"
 
-
+format:
+  html:
+    theme: simplex
+    css: styles.css
+    toc: true
+    linkcolor: "#EB8A90"

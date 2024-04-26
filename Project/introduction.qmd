@@ -1,0 +1,25 @@
+---
+title: "Introduction"
+format: html
+---
+
+What is CRM
+
+Why CRM is important
+
+What are linked list 
+
+Why are they important
+
+
+How will they help with CRM 
+
+What our CRM system will include aka the functions
+
+What are startup is - # of employess, packages being offered 
+
+How our data was "collected"
+
+Explain format of this project ... aka walking through code and what it does
+
+V
