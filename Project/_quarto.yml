@@ -5,8 +5,7 @@ website:
   title: "5200 Project"
   navbar:
     left:
-      - href: intoduction.qmd 
-        text: Introduction
+      - href: introduction.qmd 
       - Project.qmd
       - icon: github
         menu:

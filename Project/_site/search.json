@@ -2,14 +2,14 @@
   {
     "objectID": "Project.html",
     "href": "Project.html",
-    "title": "Project",
+    "title": "Project Walkthrough",
     "section": "",
     "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
   },
   {
     "objectID": "Project.html#quarto",
     "href": "Project.html#quarto",
-    "title": "Project",
+    "title": "Project Walkthrough",
     "section": "",
     "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
   },
@@ -18,6 +18,62 @@
     "href": "introduction.html",
     "title": "Introduction",
     "section": "",
-    "text": "What is CRM\nWhy CRM is important\nWhat are linked list\nWhy are they important\nHow will they help with CRM\nWhat our CRM system will include aka the functions\nWhat are startup is - # of employess, packages being offered\nHow our data was “collected”\nExplain format of this project … aka walking through code and what it does\nV"
+    "text": "Customer relationship management (CRM) is a crucial component of a businesses success. CRM is software used by a company to help them maintain solid relationships with their clients. It is critical for a company’s success specifically when a company is just getting started, like a startup.\nWithin this project, we are acting as a travel startup with the hopes of building a platform to manage a small number of customers utilizing a basic data structure - a linked list."
+  },
+  {
+    "objectID": "rough_linked_list.html",
+    "href": "rough_linked_list.html",
+    "title": "5200 Project",
+    "section": "",
+    "text": "class Customer:\n    def __init__(self, customer_id, name, email, phone, address, elements, country, price):\n        self.customer_id = customer_id\n        self.name = name\n        self.email = email\n        self.phone = phone\n        self.next_customer = None\n\nclass CustomerLinkedList:\n    def __init__(self):\n        self.head = None\n\n    def add_customer(self, customer_id, name, email, phone, address, elements, country, price):\n        new_customer = Customer(self, customer_id, name, email, phone, address, elements, country, price)\n        if not self.head:\n            self.head = new_customer\n        else:\n            current = self.head\n            while current.next_customer:\n                current = current.next_customer\n            current.next_customer = new_customer\n\n    def display_customers(self):\n        current = self.head\n        while current:\n            print(\"Customer ID:\", current.customer_id)\n            print(\"Name:\", current.name)\n            print(\"Email:\", current.email)\n            print(\"Phone:\", current.phone)\n            print(\"------------------------\")\n            current = current.next_customer\n            \n    def remove_customer(self):\n        current = self.head \n\n    def update_information(self, customer_id):\n\n    def add_customer_feedback(self, customer_id): #this means they have come back from their trip\n\n    def export_all_customer_information(self, customer_id):\n\n    def add_another_package(self, customer_id):\n\n    def view_linked_list(self):\n\n    \n\n# Example usage:\ncustomer_list = CustomerLinkedList()\ncustomer_list.add_customer(1, \"John Doe\", \"john@example.com\", \"123-456-7890\", \"address\", \"elements\", \"country\", \"price\")\n#customer_list.add_customer(2, \"Jane Smith\", \"jane@example.com\", \"987-654-3210\")\n\nprint(\"List of Customers:\")\nprint(\"------------------------\")\ncustomer_list.display_customers()\n\nTypeError: Customer.__init__() takes 9 positional arguments but 10 were given"
+  },
+  {
+    "objectID": "introduction.html#what-is-customer-relationship-management",
+    "href": "introduction.html#what-is-customer-relationship-management",
+    "title": "Introduction",
+    "section": "",
+    "text": "Customer relationship management (CRM) is a crucial component of a businesses success. CRM is software used by a company to help them maintain solid relationships with their clients. It is critical for a company’s success specifically when a company is just getting started, like a startup.\nWithin this project, we are acting as a travel startup with the hopes of building a platform to manage a small number of customers utilizing a basic data structure - a linked list."
+  },
+  {
+    "objectID": "introduction.html#what-are-linked-lists",
+    "href": "introduction.html#what-are-linked-lists",
+    "title": "Introduction",
+    "section": "What are Linked Lists?",
+    "text": "What are Linked Lists?\nLinked lists are the basis of many data structures. They are a fundamental concept in the world of computer science and they have the power to help construct a basic CRM system. A linked list consists of nodes where each node contains data and a reference link to the next node within a sequence. This structure allows for dynamic memory allocation and efficient insertion and deletion operations compared to arrays."
+  },
+  {
+    "objectID": "introduction.html#crm-and-linked-lists",
+    "href": "introduction.html#crm-and-linked-lists",
+    "title": "Introduction",
+    "section": "CRM and Linked Lists",
+    "text": "CRM and Linked Lists\nThis linked list will hold the power to update and edit customer information within the hypothetical CRM system that we are creating. Our CRM system includes client information including name, phone number, address, travel package bought, user ID, country and price. The linked list will allow the employees at the startup to easily access key information about their customers.\nThe CRM system will have the ability to do things like adding customers, removing customers, updating information, receiving feedback, exporting information and adding multiple packages."
+  },
+  {
+    "objectID": "introduction.html#the-startup",
+    "href": "introduction.html#the-startup",
+    "title": "Introduction",
+    "section": "The Startup",
+    "text": "The Startup\nOur startup is a travel company that allows customers to purchase travel packages to countries all around the world. There are five different packages that the company currently offers:\nA V C E R\nThe customer has the option to choose one of these packages and the country they want to travel to, and our startup handles all the logistics.\nTo replicate real information being brought into the startup we have obtained data from the python library faker.\nWe recognize that as this hypothetical startup would grow, the linked list would start to get slower. ADD OTHER OPTIONS HERE\nThis project will walk through the power of a linked list and how crucial it is to computer scientists in truly understanding the fundamentals of data structures and how they can be built upon to improve speed and efficiency.\nV"
+  },
+  {
+    "objectID": "introduction.html#our-startup",
+    "href": "introduction.html#our-startup",
+    "title": "Introduction",
+    "section": "Our Startup",
+    "text": "Our Startup\nOur startup is a travel company that allows customers to purchase travel packages to countries all around the world. There are five different packages that the company currently offers:\nA V C E R\nThe customer has the option to choose one of these packages and the country they want to travel to, and our startup handles all the logistics.\nTo replicate real information being brought into the startup we have obtained data from the python library faker."
+  },
+  {
+    "objectID": "introduction.html#beyond-linked-lists",
+    "href": "introduction.html#beyond-linked-lists",
+    "title": "Introduction",
+    "section": "Beyond Linked Lists",
+    "text": "Beyond Linked Lists\nWe recognize that as this hypothetical startup would grow, the linked list would start to get slower. ADD OTHER OPTIONS HERE"
+  },
+  {
+    "objectID": "introduction.html#objectives",
+    "href": "introduction.html#objectives",
+    "title": "Introduction",
+    "section": "Objectives",
+    "text": "Objectives\nThis project will walk through the power of a linked list and how crucial it is to computer scientists in truly understanding the fundamentals of data structures and how they can be built upon to improve speed and efficiency.\nV"
   }
 ]

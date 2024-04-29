@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5200 Project - Introduction</title>
+<title>5200 Project – rough_linked_list</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,12 +116,12 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./introduction.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./intoduction.qmd" rel="" target="">
  <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Project.html" rel="" target="">
- <span class="menu-text">Project Walkthrough</span></a>
+ <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-github" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
@@ -114,74 +148,75 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#what-is-customer-relationship-management" id="toc-what-is-customer-relationship-management" class="nav-link active" data-scroll-target="#what-is-customer-relationship-management">What is Customer Relationship Management?</a></li>
-  <li><a href="#what-are-linked-lists" id="toc-what-are-linked-lists" class="nav-link" data-scroll-target="#what-are-linked-lists">What are Linked Lists?</a></li>
-  <li><a href="#crm-and-linked-lists" id="toc-crm-and-linked-lists" class="nav-link" data-scroll-target="#crm-and-linked-lists">CRM and Linked Lists</a></li>
-  <li><a href="#our-startup" id="toc-our-startup" class="nav-link" data-scroll-target="#our-startup">Our Startup</a></li>
-  <li><a href="#beyond-linked-lists" id="toc-beyond-linked-lists" class="nav-link" data-scroll-target="#beyond-linked-lists">Beyond Linked Lists</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Introduction</h1>
+
+
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, elements, country, price):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.email <span class="op">=</span> email</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.phone <span class="op">=</span> phone</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.next_customer <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerLinkedList:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer(<span class="va">self</span>, customer_id, name, email, phone, address, elements, country, price):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        new_customer <span class="op">=</span> Customer(<span class="va">self</span>, customer_id, name, email, phone, address, elements, country, price)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> new_customer</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.next_customer:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.next_customer</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            current.next_customer <span class="op">=</span> new_customer</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_customers(<span class="va">self</span>):</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer ID:"</span>, current.customer_id)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Name:"</span>, current.name)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Email:"</span>, current.email)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Phone:"</span>, current.phone)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.next_customer</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> remove_customer(<span class="va">self</span>):</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id):</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer_feedback(<span class="va">self</span>, customer_id): <span class="co">#this means they have come back from their trip</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> export_all_customer_information(<span class="va">self</span>, customer_id):</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_another_package(<span class="va">self</span>, customer_id):</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"address"</span>, <span class="st">"elements"</span>, <span class="st">"country"</span>, <span class="st">"price"</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(2, "Jane Smith", "jane@example.com", "987-654-3210")</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: Customer.__init__() takes 9 positional arguments but 10 were given</code></pre>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="what-is-customer-relationship-management" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-customer-relationship-management">What is Customer Relationship Management?</h2>
-<p>Customer relationship management (CRM) is a crucial component of a businesses success. CRM is software used by a company to help them maintain solid relationships with their clients. It is critical for a company’s success specifically when a company is just getting started, like a startup.</p>
-<p>Within this project, we are acting as a travel startup with the hopes of building a platform to manage a small number of customers utilizing a basic data structure - a linked list.</p>
-<center>
-<img src="images/crm_pic.jpg" class="img-fluid" style="width:25.0%">
-</center>
-</section>
-<section id="what-are-linked-lists" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-linked-lists">What are Linked Lists?</h2>
-<p>Linked lists are the basis of many data structures. They are a fundamental concept in the world of computer science and they have the power to help construct a basic CRM system. A linked list consists of nodes where each node contains data and a reference link to the next node within a sequence. This structure allows for dynamic memory allocation and efficient insertion and deletion operations compared to arrays.</p>
-</section>
-<section id="crm-and-linked-lists" class="level2">
-<h2 class="anchored" data-anchor-id="crm-and-linked-lists">CRM and Linked Lists</h2>
-<p>This linked list will hold the power to update and edit customer information within the hypothetical CRM system that we are creating. Our CRM system includes client information including name, phone number, address, travel package bought, user ID, country and price. The linked list will allow the employees at the startup to easily access key information about their customers.</p>
-<p>The CRM system will have the ability to do things like adding customers, removing customers, updating information, receiving feedback, exporting information and adding multiple packages.</p>
-</section>
-<section id="our-startup" class="level2">
-<h2 class="anchored" data-anchor-id="our-startup">Our Startup</h2>
-<p>Our startup is a travel company that allows customers to purchase travel packages to countries all around the world. There are five different packages that the company currently offers:</p>
-<p>A V C E R</p>
-<p>The customer has the option to choose one of these packages and the country they want to travel to, and our startup handles all the logistics.</p>
-<p>To replicate real information being brought into the startup we have obtained data from the python library faker.</p>
-</section>
-<section id="beyond-linked-lists" class="level2">
-<h2 class="anchored" data-anchor-id="beyond-linked-lists">Beyond Linked Lists</h2>
-<p>We recognize that as this hypothetical startup would grow, the linked list would start to get slower. ADD OTHER OPTIONS HERE</p>
-</section>
-<section id="objectives" class="level2">
-<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
-<p>This project will walk through the power of a linked list and how crucial it is to computer scientists in truly understanding the fundamentals of data structures and how they can be built upon to improve speed and efficiency.</p>
-<p>V</p>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
