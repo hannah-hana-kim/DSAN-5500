@@ -163,6 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#preliminary-linked-list" id="toc-preliminary-linked-list" class="nav-link active" data-scroll-target="#preliminary-linked-list">Preliminary Linked List</a></li>
   <li><a href="#double-linked-list" id="toc-double-linked-list" class="nav-link" data-scroll-target="#double-linked-list">Double Linked List</a></li>
   <li><a href="#final-linked-list" id="toc-final-linked-list" class="nav-link" data-scroll-target="#final-linked-list">Final Linked List</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -378,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
 <span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>                current.elements <span class="op">=</span> new_plan</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>                current.plan <span class="op">=</span> new_plan</span>
 <span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
 <span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>                current.price <span class="op">=</span> new_price</span>
 <span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
@@ -415,10 +416,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">2</span>, <span class="st">"Jane Smith"</span>, <span class="st">"jane@example.com"</span>, <span class="st">"987-654-3210"</span>, <span class="st">"707 Mango St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Mexico"</span>, <span class="dv">3100</span>)</span>
 <span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">3</span>, <span class="st">"Alice Johnson"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"555-123-4567"</span>, <span class="st">"456 Elm St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Canada"</span>, <span class="dv">3000</span>)</span>
 <span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">4</span>, <span class="st">"Bob Brown"</span>, <span class="st">"bob@example.com"</span>, <span class="st">"333-555-7777"</span>, <span class="st">"789 Oak St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Australia"</span>, <span class="dv">2000</span>)</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "202 Cedar St", "Cultural Immersion", "Spain", 3500)</span></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "303 Maple St", "Explorer's Delight", "France", 3200)</span></span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "404 Birch St", "Luxury Escapes", "Italy", 5500)</span></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "505 Walnut St", "Budget Explore", "Germany", 2100)</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">6</span>, <span class="st">"Ella Martinez"</span>, <span class="st">"ella@example.com"</span>, <span class="st">"999-888-7777"</span>, <span class="st">"202 Cedar St"</span>, <span class="st">"Cultural Immersion"</span>, <span class="st">"Spain"</span>, <span class="dv">3500</span>)</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">7</span>, <span class="st">"Frank Wilson"</span>, <span class="st">"frank@example.com"</span>, <span class="st">"777-888-9999"</span>, <span class="st">"303 Maple St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"France"</span>, <span class="dv">3200</span>)</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">8</span>, <span class="st">"Grace Lee"</span>, <span class="st">"grace@example.com"</span>, <span class="st">"666-555-4444"</span>, <span class="st">"404 Birch St"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Italy"</span>, <span class="dv">5500</span>)</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">9</span>, <span class="st">"Henry Garcia"</span>, <span class="st">"henry@example.com"</span>, <span class="st">"444-333-2222"</span>, <span class="st">"505 Walnut St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Germany"</span>, <span class="dv">2100</span>)</span>
 <span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
 <span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
@@ -454,6 +455,34 @@ Email: bob@example.com
 Phone: 333-555-7777
 Plans: Australia
 Price: 2000
+------------------------
+Customer ID: 6
+Name: Ella Martinez
+Email: ella@example.com
+Phone: 999-888-7777
+Plans: Spain
+Price: 3500
+------------------------
+Customer ID: 7
+Name: Frank Wilson
+Email: frank@example.com
+Phone: 777-888-9999
+Plans: France
+Price: 3200
+------------------------
+Customer ID: 8
+Name: Grace Lee
+Email: grace@example.com
+Phone: 666-555-4444
+Plans: Italy
+Price: 5500
+------------------------
+Customer ID: 9
+Name: Henry Garcia
+Email: henry@example.com
+Phone: 444-333-2222
+Plans: Germany
+Price: 2100
 ------------------------</code></pre>
 </div>
 </div>
@@ -474,7 +503,7 @@ Customer ID: 1
 Name: John Doe
 Email: john@example.com
 Phone: 123-456-7890
-Plans: Brazil
+Plans: Luxury Escape
 Price: 5500
 ------------------------
 Customer ID: 2
@@ -497,6 +526,34 @@ Email: bob@example.com
 Phone: 333-555-7777
 Plans: Australia
 Price: 2000
+------------------------
+Customer ID: 6
+Name: Ella Martinez
+Email: ella@example.com
+Phone: 999-888-7777
+Plans: Spain
+Price: 3500
+------------------------
+Customer ID: 7
+Name: Frank Wilson
+Email: frank@example.com
+Phone: 777-888-9999
+Plans: France
+Price: 3200
+------------------------
+Customer ID: 8
+Name: Grace Lee
+Email: grace@example.com
+Phone: 666-555-4444
+Plans: Italy
+Price: 5500
+------------------------
+Customer ID: 9
+Name: Henry Garcia
+Email: henry@example.com
+Phone: 444-333-2222
+Plans: Germany
+Price: 2100
 ------------------------</code></pre>
 </div>
 </div>
@@ -709,6 +766,102 @@ Plans:
 </section>
 <section id="final-linked-list" class="level3">
 <h3 class="anchored" data-anchor-id="final-linked-list">Final Linked List</h3>
+<p>Finally, we wanted to dive deeper thinking about what could be done if a customer wanted to purchase more than one package. The code below implements adding a package plan and price to the linked list.</p>
+<p>This was created to address that this linked list will get complicated very quickly and customers will often change their mind or purchase from the company again.</p>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>current_customer <span class="op">=</span> customer_list.head</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> current_customer:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> current_customer.customer_id <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        current_customer.add_plan(<span class="st">"Budget Explore"</span>, <span class="dv">5000</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    current_customer <span class="op">=</span> current_customer.<span class="bu">next</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Updated Customers:"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Updated Customers:
+------------------------
+Customer ID: 1
+Name: John Doe
+Email: john@example.com
+Phone: 123-456-7890
+Address: 123 Main St
+Country: USA
+Plans:
+- Plan: Explorer's Delight
+  Price: 3500
+- Plan: Budget Explore
+  Price: 5000
+------------------------
+Customer ID: 2
+Name: Jane Smith
+Email: jane@example.com
+Phone: 987-654-3210
+Address: 456 Elm St
+Country: Canada
+Plans:
+- Plan: Luxury Escapes
+  Price: 5500
+------------------------
+Customer ID: 3
+Name: Alice Johnson
+Email: alice@example.com
+Phone: 555-123-4567
+Address: 789 Oak St
+Country: Australia
+Plans:
+- Plan: Budget Explore
+  Price: 2000
+------------------------
+Customer ID: 4
+Name: Bob Brown
+Email: bob@example.com
+Phone: 333-555-7777
+Address: 101 Pine St
+Country: UK
+Plans:
+- Plan: Family Fun
+  Price: 4000
+------------------------
+Customer ID: 5
+Name: Charlie Davis
+Email: charlie@example.com
+Phone: 111-222-3333
+Address: 202 Cedar St
+Country: Spain
+Plans:
+- Plan: Cultural Immersion
+  Price: 3000
+------------------------</code></pre>
+</div>
+</div>
+<p>As illustrated by the results, we have implemented the possibility to add more than one plan to a customer.</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p><strong>Preliminary Linked List:</strong></p>
+<ul>
+<li><p>Customer and CustomerLinkedList Classes: Initially, we structured the linked list with a Customer class representing individual customers and a CustomerLinkedList class managing a list of customers.</p></li>
+<li><p>Plan Integration: Each customer had a linked list of plans associated with them, allowing for flexibility in managing multiple plans for each customer.</p></li>
+<li><p>Set and Add Plan Methods: These methods facilitated the setting and addition of plans to customers’ linked lists.</p></li>
+<li><p>Display Customers and Update Information: Methods were provided for displaying customer information and updating it, although faced with some issues in updating plan information.</p></li>
+</ul>
+<p><strong>Double Linked List:</strong></p>
+<ul>
+<li>Introduction of PlanNode: To address issues with updating plan information independently of prices, we introduced a PlanNode class to link plans and prices together.</li>
+<li>Refinement of Customer Class: The Customer class was updated to store a linked list of PlanNode objects instead of directly storing plan and price attributes.</li>
+<li>Updated Methods: Methods for adding customers and displaying customer information remained largely the same.</li>
+</ul>
+<p><strong>Final Linked List:</strong></p>
+<ul>
+<li>Enhanced Plan Addition: Recognizing the need for customers to purchase multiple plans, we implemented the ability to add additional plans and prices to customers’ linked lists.</li>
+<li>Dynamic Updates: The code provided showcases how customers’ plans can be updated dynamically, allowing for flexibility in managing changing customer preferences.</li>
+</ul>
+<p>Overall, each phase of development demonstrates a progressive refinement of your Linked List implementation, addressing issues and improving functionality along the way. The final implementation provides a robust solution for managing customers and their plans, with flexibility to accommodate changes and additions over time.</p>
 
 
 </section>

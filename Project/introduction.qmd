@@ -54,22 +54,7 @@ The faker data creates a customer and includes:
 
 ## Our CRM System
 
-Our developed CRM System will include:
-
-add_customer: Adds a new customer to the linked list.
-
-display_customers: Displays all customers in the linked list with their details.
-
-update_information: Updates information for a specific customer identified by their customer ID.
-
-add_customer_feedback: Placeholder method to add feedback for a customer after their trip.
-
-export_all_customer_information: Placeholder method for exporting all customer information.
-
-add_another_package: Adds another package to a customer's plan.
-
-view_linked_list: Displays a summary of the linked list by printing customer IDs and names.
-
+Our developed CRM System will include many functionalities allowing our startup to manage their past current and future customers. To walk through our system visit this link [here](code.qmd)
 
 ## Beyond Linked Lists
 

@@ -195,7 +195,7 @@ class CustomerLinkedList:
                 current.email = new_email
                 current.phone = new_phone
                 current.address = new_address
-                current.elements = new_plan
+                current.plan = new_plan
                 current.country = new_country
                 current.price = new_price
                 return
@@ -232,10 +232,10 @@ customer_list.add_customer(1, "John Doe", "john@example.com", "123-456-7890", "6
 customer_list.add_customer(2, "Jane Smith", "jane@example.com", "987-654-3210", "707 Mango St", "Explorer's Delight", "Mexico", 3100)
 customer_list.add_customer(3, "Alice Johnson", "alice@example.com", "555-123-4567", "456 Elm St", "Explorer's Delight", "Canada", 3000)
 customer_list.add_customer(4, "Bob Brown", "bob@example.com", "333-555-7777", "789 Oak St", "Budget Explore", "Australia", 2000)
-#customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "202 Cedar St", "Cultural Immersion", "Spain", 3500)
-#customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "303 Maple St", "Explorer's Delight", "France", 3200)
-#customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "404 Birch St", "Luxury Escapes", "Italy", 5500)
-#customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "505 Walnut St", "Budget Explore", "Germany", 2100)
+customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "202 Cedar St", "Cultural Immersion", "Spain", 3500)
+customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "303 Maple St", "Explorer's Delight", "France", 3200)
+customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "404 Birch St", "Luxury Escapes", "Italy", 5500)
+customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "505 Walnut St", "Budget Explore", "Germany", 2100)
 
 print("List of Customers:")
 print("------------------------")
@@ -405,3 +405,51 @@ As you can see, as the plan updates so does the price.
 Overall, the second implementation offers improved maintainability, flexibility, and scalability compared to the first implementation, making it a preferred choice for managing plan and price data in a customer management system. But, in an attempt to make the Linked List even better we 
 
 ### Final Linked List
+
+Finally, we wanted to dive deeper thinking about what could be done if a customer wanted to purchase more than one package. The code below implements adding a package plan and price to the linked list. 
+
+This was created to address that this linked list will get complicated very quickly and customers will often change their mind or purchase from the company again. 
+
+```{python}
+current_customer = customer_list.head
+while current_customer:
+    if current_customer.customer_id == 1:
+        current_customer.add_plan("Budget Explore", 5000)
+
+    current_customer = current_customer.next
+
+print("Updated Customers:")
+print("------------------------")
+customer_list.display_customers() 
+```
+
+As illustrated by the results, we have implemented the possibility to add more than one plan to a customer. 
+
+## Summary 
+
+**Preliminary Linked List:**
+
+- Customer and CustomerLinkedList Classes: Initially, we structured the linked list with a Customer class representing individual customers and a CustomerLinkedList class managing a list of customers.
+
+- Plan Integration: Each customer had a linked list of plans associated with them, allowing for flexibility in managing multiple plans for each customer.
+
+- Set and Add Plan Methods: These methods facilitated the setting and addition of plans to customers' linked lists.
+
+- Display Customers and Update Information: Methods were provided for displaying customer information and updating it, although faced with some issues in updating plan information.
+
+**Double Linked List:**
+
+- Introduction of PlanNode: To address issues with updating plan information independently of prices, we introduced a PlanNode class to link plans and prices together.
+
+- Refinement of Customer Class: The Customer class was updated to store a linked list of PlanNode objects instead of directly storing plan and price attributes.
+
+- Updated Methods: Methods for adding customers and displaying customer information remained the same.
+
+**Final Linked List:**
+
+- Enhanced Plan Addition: Recognizing the need for customers to purchase multiple plans, we implemented the ability to add additional plans and prices to customers' linked lists.
+
+- Dynamic Updates: The code provided showcases how customers' plans can be updated dynamically, allowing for flexibility in managing changing customer preferences.
+
+
+Overall, each phase of development demonstrates a progressive refinement of our Linked List implementation. We addressed issues with functionality along the way. The final implementation provides a robust solution for managing customers and their plans, with flexibility to accommodate changes and additions over time.
