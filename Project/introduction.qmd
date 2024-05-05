@@ -73,8 +73,13 @@ view_linked_list: Displays a summary of the linked list by printing customer IDs
 
 ## Beyond Linked Lists
 
-We recognize that as this hypothetical startup would grow, the linked list would start to face many technical issues such as scalability, security, and functionality.
+We recognize that as this hypothetical startup would grow, the linked list would start to face many technical issues such as scalability and security concerns. 
 
+Linked lists can face scalability challenges as the size of the customer database grows. Insertions and deletions in a linked list can be inefficient, especially if the list becomes large. As the CRM system accumulates more customer data and interactions, the performance of the linked list may be inadequate for our startups needs. The solution could be considering more scalable data structures like a hash table. 
+
+Furthermore, linked lists may pose security risks, especially if not implemented securely. In a linked list, nodes can be easily manipulated or accessed if proper access controls and data encryption mechanisms are not in place. This vulnerability can lead to data breaches and unauthorized access to sensitive customer information. The solution to this would be to implement robust security measures such as authentication protocols to protect customer data stored in the CRM system. 
+
+Within this project we will focus on a reliable linked list fully aware of what challenges could arise in the future.
 
 ## Objectives
 
