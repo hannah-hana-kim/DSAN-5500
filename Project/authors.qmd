@@ -3,3 +3,9 @@ title: "About Us"
 format: html
 ---
 
+### Kendall Gilbert 
+
+
+My name is Kendall Gilbert and I am first year student in the Data Science and Analytics program at Georgetown University. I  graduated undergrad from Elon University where I majored in Media Analytics with minors in Statistics and Business Administration. I am passionate about design thinking, machine learning and making a meaningful impact with data.
+
+### Hannah Kim

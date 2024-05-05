@@ -5,10 +5,13 @@ website:
   title: "5200 Project"
   navbar:
     left:
+      - href: authors.qmd
+        text: About Us
       - href: introduction.qmd 
       - href: litreview.qmd
         text: Literature Review
-      - Project.qmd
+      - href: code.qmd
+        text: Project Walkthrough
 
       - icon: github
         menu:
@@ -22,3 +25,4 @@ format:
     css: styles.css
     toc: true
     linkcolor: "#EB8A90"
+    mainfont: Georgia

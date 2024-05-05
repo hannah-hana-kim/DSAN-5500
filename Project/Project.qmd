@@ -1,7 +1,21 @@
 ---
-title: "Project Walkthrough"
+title: "Data Structures Project"
 ---
 
-## Quarto
+Examining different applications of the data structure that make it helpful for particular fields.
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+State which course topic you’ve chosen:
+
+Customer Relationship Management Systems
+
+Identify a substantive application of that topic in a field you are interested in: e.g., bioinformatics, marketing, finance, NLP, image processing, operations management, social science:
+
+Marketing
+
+Write a Literature Review section containing a few examples of the use of the topic in your chosen field that are particularly interesting to you:
+
+Literature Review can be found under Lit Review Tab
+
+Create a Quarto document or Jupyter notebook containing code that you wrote yourself which illustrates the application of the data structure or algorithm within your domain of interest, describing in your own words (through comments or Markdown text above/below the code) how the code works and what it does.
+
+Our data structure can be found under Project Walkthrough

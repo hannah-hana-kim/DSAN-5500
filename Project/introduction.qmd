@@ -25,24 +25,56 @@ This linked list will hold the power to update and edit customer information wit
 
 The CRM system will have the ability to do things like adding customers, removing customers, updating information, receiving feedback, exporting information and adding multiple packages. 
 
+Below is an example of how the list will function for a customer. 
+
+<center>![](images/ll.png){width=35%}</center>
+
+
 ## Our Startup
 Our startup is a travel company that allows customers to purchase travel packages to countries all around the world. There are five different packages that the company currently offers:
 
-1. Luxury
-2. Budget
-3. Family
-4. Cultural Immersion
-5. Couple Retreat
-
-[Explorer's Delight, Luxury Escapes, Budget Explore, Family Fun, Cultural Immersion]
+1. Explorer's Delight
+2. Luxury Escapes
+3. Budget Explore
+4. Family Fun
+5. Cultural Immersion
 
 The customer has the option to choose one of these packages and the country they want to travel to, and our startup handles all the logistics.
 
 To replicate real information being brought into the startup we have obtained data from the python library faker. 
 
+The faker data creates a customer and includes:
+
+- Name
+- Address
+- Phone Number 
+- Country 
+- Plan 
+- Price
+
+## Our CRM System
+
+Our developed CRM System will include:
+
+add_customer: Adds a new customer to the linked list.
+
+display_customers: Displays all customers in the linked list with their details.
+
+update_information: Updates information for a specific customer identified by their customer ID.
+
+add_customer_feedback: Placeholder method to add feedback for a customer after their trip.
+
+export_all_customer_information: Placeholder method for exporting all customer information.
+
+add_another_package: Adds another package to a customer's plan.
+
+view_linked_list: Displays a summary of the linked list by printing customer IDs and names.
+
+
 ## Beyond Linked Lists
 
-We recognize that as this hypothetical startup would grow, the linked list would start to get slower. ADD OTHER OPTIONS HERE
+We recognize that as this hypothetical startup would grow, the linked list would start to face many technical issues such as scalability, security, and functionality.
+
 
 ## Objectives
 
