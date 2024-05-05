@@ -28,6 +28,8 @@ C
 E
 R
 
+[Explorer's Delight, Luxury Escapes, Budget Explore, Family Fun, Cultural Immersion]
+
 The customer has the option to choose one of these packages and the country they want to travel to, and our startup handles all the logistics.
 
 To replicate real information being brought into the startup we have obtained data from the python library faker. 
