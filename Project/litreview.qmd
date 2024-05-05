@@ -1,0 +1,12 @@
+---
+title: "Literature Review"
+format: html
+---
+
+## The data behind technologically advance CRM systems
+
+Lit Review on 
+
+- https://www.tandfonline.com/doi/full/10.1080/1331677X.2019.1676283
+- https://www.sciencedirect.com/science/article/pii/S2212017312001119
+- https://journals.sagepub.com/doi/abs/10.1177/2319714518798410

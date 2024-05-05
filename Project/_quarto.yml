@@ -6,7 +6,10 @@ website:
   navbar:
     left:
       - href: introduction.qmd 
+      - href: litreview.qmd
+        text: Literature Review
       - Project.qmd
+
       - icon: github
         menu:
           - text: Source Code

@@ -1,18 +1,24 @@
 ---
 title: "Introduction"
 format: html
+bibliography: project_reference.bib
+
 ---
 
 ## What is Customer Relationship Management?
 
-Customer relationship management (CRM) is a crucial component of a businesses success. CRM is software used by a company to help them maintain solid relationships with their clients. It is critical for a company's success specifically when a company is just getting started, like a startup. 
+Customer relationship management (CRM) is a crucial component of a businesses success. CRM is software used by a company in an attempt to help them maintain solid relationships with their clients. It is critical for a company's success specifically when a company is just getting started, specifically, a startup. 
 
 Within this project, we are acting as a travel startup with the hopes of building a platform to manage a small number of customers utilizing a basic data structure - a linked list. 
 
 <center>![](images/crm_pic.jpg){width=25%}</center>
 
 ## What are Linked Lists?
-Linked lists are the basis of many data structures. They are a fundamental concept in the world of computer science and they have the power to help construct a basic CRM system. A linked list consists of nodes where each node contains data and a reference link to the next node within a sequence. This structure allows for dynamic memory allocation and efficient insertion and deletion operations compared to arrays. 
+Linked lists are the basis of many data structures. They are a fundamental concept in the world of computer science and they have the power to help construct a basic CRM system. A linked list consists of nodes where each node contains data and a reference link to the next node within a sequence. This structure allows for dynamic memory allocation and efficient insertion and deletion operations compared to arrays.[@noauthor_linked_nodate]
+
+Below is the basic structure of a linked list. 
+
+<center>![](images/linked_list.png){width=35%}</center>
 
 ## CRM and Linked Lists
 This linked list will hold the power to update and edit customer information within the hypothetical CRM system that we are creating. Our CRM system includes client information including name, phone number, address, travel package bought, user ID, country and price. The linked list will allow the employees at the startup to easily access key information about their customers. 
@@ -22,11 +28,11 @@ The CRM system will have the ability to do things like adding customers, removin
 ## Our Startup
 Our startup is a travel company that allows customers to purchase travel packages to countries all around the world. There are five different packages that the company currently offers:
 
-A
-V
-C
-E
-R
+1. Luxury
+2. Budget
+3. Family
+4. Cultural Immersion
+5. Couple Retreat
 
 The customer has the option to choose one of these packages and the country they want to travel to, and our startup handles all the logistics.
 
@@ -40,4 +46,3 @@ We recognize that as this hypothetical startup would grow, the linked list would
 
 This project will walk through the power of a linked list and how crucial it is to computer scientists in truly understanding the fundamentals of data structures and how they can be built upon to improve speed and efficiency. 
 
-V
