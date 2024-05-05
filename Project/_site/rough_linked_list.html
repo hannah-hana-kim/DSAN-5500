@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create another linked list: PlanNode and link the plans and prices together</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlanNode:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, plan, price):</span>
@@ -277,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
 <span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Customer not found."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"123 Main St"</span>, <span class="st">"USA"</span>, <span class="st">"Explorer's Delight"</span>)</span>
@@ -399,7 +399,7 @@ Plans:
 ------------------------</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan, price):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
@@ -503,69 +503,69 @@ Customer ID: 1
 Name: John Doe
 Email: john@example.com
 Phone: 123-456-7890
-Plans: Family Fun
+Plans: Brazil
 Price: 3800
 ------------------------
 Customer ID: 2
 Name: Jane Smith
 Email: jane@example.com
 Phone: 987-654-3210
-Plans: Explorer's Delight
+Plans: Mexico
 Price: 3100
 ------------------------
 Customer ID: 3
 Name: Alice Johnson
 Email: alice@example.com
 Phone: 555-123-4567
-Plans: Explorer's Delight
+Plans: Canada
 Price: 3000
 ------------------------
 Customer ID: 4
 Name: Bob Brown
 Email: bob@example.com
 Phone: 333-555-7777
-Plans: Budget Explore
+Plans: Australia
 Price: 2000
 ------------------------
 Customer ID: 5
 Name: Charlie Davis
 Email: charlie@example.com
 Phone: 111-222-3333
-Plans: Family Fun
+Plans: UK
 Price: 4000
 ------------------------
 Customer ID: 6
 Name: Ella Martinez
 Email: ella@example.com
 Phone: 999-888-7777
-Plans: Cultural Immersion
+Plans: Spain
 Price: 3500
 ------------------------
 Customer ID: 7
 Name: Frank Wilson
 Email: frank@example.com
 Phone: 777-888-9999
-Plans: Explorer's Delight
+Plans: France
 Price: 3200
 ------------------------
 Customer ID: 8
 Name: Grace Lee
 Email: grace@example.com
 Phone: 666-555-4444
-Plans: Luxury Escapes
+Plans: Italy
 Price: 5500
 ------------------------
 Customer ID: 9
 Name: Henry Garcia
 Email: henry@example.com
 Phone: 444-333-2222
-Plans: Budget Explore
+Plans: Germany
 Price: 2100
 ------------------------</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update customer informtion</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update customer informtion #only changed price </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>customer_list.update_information(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"606 Pineapple St"</span>, <span class="st">"Luxury Escape"</span>, <span class="st">"Brazil"</span>, <span class="dv">5500</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
