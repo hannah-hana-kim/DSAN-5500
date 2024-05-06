@@ -1,7 +1,11 @@
 ---
 title: "Introduction"
-format: html
 bibliography: project_reference.bib
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    code-fold: true
 
 ---
 
