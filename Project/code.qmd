@@ -357,6 +357,11 @@ customer_list.display_customers()
 
 As illustrated by the results, we have implemented the possibility to add more than one plan to a customer. 
 
+### Visualizing Linked List
+
+
+
+
 ## Summary 
 
 **Preliminary Linked List:**
