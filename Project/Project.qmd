@@ -4,7 +4,7 @@ title: DSAN5500 Final Project
 
 ### Question #3 Exploring Applications
 
-**Examining different applications of the data structure that make it helpful for particular fields**
+**Exploration: Examining different applications of the data structure that make it helpful for particular fields**
 
 **Topic Chosen:**
 

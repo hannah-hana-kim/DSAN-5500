@@ -40,19 +40,6 @@ Next is the Customer Linked List that includes functions that can edit customer 
 
 **CustomerLinkedList Class**
 ```{python}  
-class Customer:
-    def __init__(self, customer_id, name, email, phone, address, country, plan, price):
-        self.customer_id = customer_id
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.address = address
-        plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]
-        self.plan = plan
-        self.country = country
-        self.price = price
-        self.next = None
-
 class CustomerLinkedList:
     def __init__(self):
         self.head = None
@@ -139,7 +126,6 @@ class CustomerLinkedList:
             print(f"Name: {current.name}")
             print("------------------------")
             current = current.next
-
     
 ```
 
@@ -177,11 +163,13 @@ There are a few issues with this report:
 - Plans and Price need to be linked together
 - If a plan is changed, the price is not updated
 
-Becoming aware of these difficulties led us to phase 2 - creating a nested linked list to deal with the plan and price attributes not being together. 
+Becoming aware of these difficulties led us to phase 2 - creating a nested linked list to deal with the plan and price attributes not being together as well as tweaking other errors.
 
 ### Phase 2 - Nested Linked List
 
-Within the double linked list there are now three classes - PlanNode, Customer and CustomerLinkedList:
+Within the double linked list there are now three classes - PlanNode, Customer and CustomerLinkedList. 
+
+The updates implemented include:
 
 - The Customer class does not directly store plan and price information. Instead, it includes a linked list of PlanNode objects, each containing plan and price.
 - Plans and their corresponding prices are set within the set_plan method based on a predefined dictionary of plan prices. This ensures consistency and easier management of plan-related data.
@@ -359,7 +347,11 @@ As illustrated by the results, we have implemented the possibility to add more t
 
 ### Visualizing Linked List
 
-```{python}
+To display what our linked list would look like if illustrated, we have utilized the python library graphviz.
+
+As shown below, John has purchase two packages - Explorer's Delight and Budget Explore, Jane has purchased luxury escape and Alice has purchased Budge Explore. 
+
+```{python echo=FALSE}
 # visualization
 from IPython.display import display
 import graphviz as gv # for visualizing a tree using Digraph
@@ -403,7 +395,7 @@ visualize_ll(customer_list)
 ```
 
 
-## Summary 
+## Summary / Conclusion
 
 **Preliminary Linked List:**
 
@@ -429,5 +421,14 @@ visualize_ll(customer_list)
 
 - Dynamic Updates - The code provided showcases how customers' plans can be updated dynamically, allowing for flexibility in managing changing customer preferences.
 
+**Visualizing Linked List**
 
-Overall, each phase of development demonstrates a progressive refinement of our Linked List implementation. We addressed issues with functionality along the way. The final implementation provides a robust solution for managing customers and their plans, with flexibility to accommodate changes and additions over time.
+- We provided a visualization of the linked list in an attempt to illustrate the structure of this linked list. Although it only includes the customer ID, name, package and prices, it is missing the other information. 
+
+Overall, each phase of development demonstrates a progressive improvement of our Linked List implementation. We addressed issues with functionality along the way. The final implementation provides a robust solution for managing customers and their plans, with flexibility to accommodate changes and additions over time. 
+
+We are aware of the drawbacks that come with the usage of linked lists (as highlited in the introduction) and it would be interesting in the future to explore how to implement this CRM linked list structure into a usable software architecture for a startup, like the one we have brainstormed or how to make it faster if the number of customers was to grow.
+
+This project provided us with the opportunity to master our proficiency in data structures, specifically linked lists, and think outside the box when it comes to data structures in specific industries. It is beneficial to take a step back from the computer science and bridge the technical work with how it can help a company, and this exploration allowed us to do so.
+
+Thanks for reading, we hope you enjoyed!
