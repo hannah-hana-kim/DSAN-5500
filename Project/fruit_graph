@@ -1,0 +1,7 @@
+digraph {
+	A [label=Apple]
+	B [label=Banana]
+	C [label=Cherry]
+	A -> B
+	B -> C
+}
