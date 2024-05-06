@@ -359,7 +359,48 @@ As illustrated by the results, we have implemented the possibility to add more t
 
 ### Visualizing Linked List
 
+```{python}
+# visualization
+from IPython.display import display
+import graphviz as gv # for visualizing a tree using Digraph
+from graphviz import Digraph, nohtml
+```
 
+```{python}
+def visualize_ll(ll):
+  dot = Digraph(
+      graph_attr={'rankdir': 'LR'},
+      node_attr={'shape': 'record', 'height': '.1'}
+    )
+  visited_nodes = set() # reduce runtime to O(1); more efficient
+  node_pointer = ll.head
+  while node_pointer is not None:
+    # New node
+    cur_id = str(node_pointer.customer_id)
+    cur_name = str(node_pointer.name)
+    if cur_name in visited_nodes:
+      break
+    plan_info = ""
+    cur_plan = node_pointer.plan_head
+    while cur_plan:
+      plan_info += cur_plan.plan + ": $" + str(cur_plan.price) + "\\n"
+      cur_plan = cur_plan.next
+  
+    dot.node(name=cur_name, label=nohtml('{{ '+ cur_id + "|" + cur_name + "|" + plan_info + '} \n' + '|<f1>}'))
+
+    # And edge from prev to cur, if not None
+    if node_pointer.next is not None:
+      # edge_from = f'{cur_name}:f1'
+      next_name = str(node_pointer.next.name)
+      dot.edge(cur_name, next_name)
+    # Now we can update prev_node_name
+    # visited_nodes.add(cur_name)
+    # prev_node_name = cur_name
+    node_pointer = node_pointer.next
+  display(dot)
+
+visualize_ll(customer_list)
+```
 
 
 ## Summary 
