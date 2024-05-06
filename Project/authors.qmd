@@ -1,6 +1,11 @@
 ---
 title: "About Us"
-format: html
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    code-fold: true
+
 ---
 
 ### Kendall Gilbert 

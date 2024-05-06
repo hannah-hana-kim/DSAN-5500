@@ -1,7 +1,12 @@
 ---
 title: "Project Walkthrough"
-format: html
 code-fold: true
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    code-fold: true
+
 ---
 
 This project included three phases of Linked Lists

@@ -1,5 +1,10 @@
 ---
-title: Mastering CRM Systems - A Deep Dive into CRM Systems and Data Structures
+title: Mastering CRM & Data Structures
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    code-fold: true
 ---
 
 ### Question #3 Exploring Applications
