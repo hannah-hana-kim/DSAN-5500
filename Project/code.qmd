@@ -7,143 +7,20 @@ code-fold: true
 This project included three phases of Linked Lists
 
 1. Preliminary Linked List 
-2. Double Linked List Structure 
+2. Nested Linked List 
 3. Final Linked List
 
-### Preliminary Linked List 
+Within this page we will walkthrough our thought process and the code we have written in each phase. The three phases built off of eachother and possible issues that could arise wihthin this hypothetical CRM System.
 
-Within the preliminary linked list we decided how the linked list would be structured. Within this page we will walkthrough our thought process and the code we have written in each phase. 
+### Phase 1 - Preliminary Linked List 
 
-This linked list was structured into two classes customerclass and customer linked list class.
+Within the preliminary linked list we decided how the linked list would be structured. 
 
-First is the customerclass which initialized the customer and plan functionality. This implementation allows each customer to have a linked list of plans associated with them. 
+This linked list was structured into two classes customerclass and customerlinkedlist class.
 
-```{python}
-class Customer:
-    def __init__(self, customer_id, name, email, phone, address, country, plan):
-        self.customer_id = customer_id
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.address = address
-        self.country = country
-        self.plan_head = None
-        self.set_plan(plan)
-        self.next = None
+First is the customerclass which initialized the customer and plan functionality. This implementation allows each customer to have a list of information associated with them. 
 
-    def set_plan(self, plan):
-        plans_price = {
-            "Explorer's Delight": 3500, 
-            "Luxury Escapes": 5500,
-            "Budget Explore": 2000, 
-            "Family Fun": 4000,
-            "Cultural Immersion": 3000
-        }
-
-        if plan not in plans_price:
-            raise ValueError("Invalid plan")
-        
-        self.add_plan(plan, plans_price[plan])
-
-    def add_plan(self, plan, price):
-        new_plan = PlanNode(plan, price)
-        if not self.plan_head:
-            self.plan_head = new_plan
-        else:
-            current = self.plan_head
-            while current.next:
-                current = current.next
-            current.next = new_plan
-```
-
-This class integrates the plan functionality. Each customer now has a plan_head attribute pointing to the head of their plan linked list. The set_plan method sets the initial plan for the customer, while the add_plan method adds new plans to the end of the linked list.
-
-Next is the Customer Linked List that includes represents a linked list of customers.
-
-```{python}  
-# customer linked list
-# class CustomerNode:
-#     def __init__(self, customer_id, name, email, phone, address, country, plan, price):
-#         self.customer_id = customer_id
-#         self.name = name
-#         self.email = email
-#         self.phone = phone
-#         self.address = address
-#         # plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]
-#         self.plan = plan
-#         self.country = country
-#         self.price = price
-#         self.next = None
-
-class CustomerLinkedList:
-    def __init__(self):
-        self.head = None
-    
-    def add_customer(self, customer_id, name, email, phone, address, country, plan):
-        new_customer = Customer(customer_id, name, email, phone, address, country, plan)
-
-        if not self.head:
-            self.head = new_customer
-        else:
-            current = self.head
-            while current.next:
-                current = current.next
-            current.next = new_customer
-
-    def display_customers(self):
-        current = self.head
-        while current:
-            print("Customer ID:", current.customer_id)
-            print("Name:", current.name)
-            print("Email:", current.email)
-            print("Phone:", current.phone)
-            print("Address:", current.address)
-            print("Country:", current.country)
-            print("Plans:")
-            plan_current = current.plan_head
-            while plan_current:
-                print("- Plan:", plan_current.plan)
-                print("  Price:", plan_current.price)
-                plan_current = plan_current.next
-            print("------------------------")
-            current = current.next
-        
-    def view_linked_list(self):
-        current = self.head
-        while current:
-            print(f"Customer ID: {current.customer_id}")
-            print(f"Name: {current.name}")
-            print("------------------------")
-            current = current.next
-
-    def update_information(self, customer_id, new_name, new_email, new_phone, new_address, new_country, new_plan_name):
-        current = self.head
-        while current:
-            if current.customer_id == customer_id:
-                current.name = new_name
-                current.email = new_email
-                current.phone = new_phone
-                current.address = new_address
-                current.country = new_country
-                current.plan_head = None  
-                current.set_plan(new_plan_name)  
-                return
-            current = current.next
-        print("Customer not found.")
-```
-
-- The __init__ method initializes the linked list with a head set to None.
-- add_customer method adds a new customer to the linked list.
-- display_customers method prints information of all customers in the linked list.
-- remove_customer method is incomplete. It should remove a customer from the linked list, but it lacks implementation.
-- update_information method updates information of a customer identified by their ID.
-- add_customer_feedback method is stubbed out and needs implementation.
-- export_all_customer_information method is stubbed out and needs implementation.
-- add_another_package method adds a new package to a customer's plan identified by their ID.
-- view_linked_list method prints basic information of all customers in the linked list.
-
-As you can see, this linked list gives us a good idea of what out final linked list would entail. To test out the linked list we ran it with the customers created by the faker data library. 
-
+**Customer Class**
 ```{python}
 class Customer:
     def __init__(self, customer_id, name, email, phone, address, country, plan, price):
@@ -152,7 +29,25 @@ class Customer:
         self.email = email
         self.phone = phone
         self.address = address
-        # plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]
+        plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]
+        self.plan = plan
+        self.country = country
+        self.price = price
+        self.next = None
+```
+
+Next is the Customer Linked List that includes functions that can edit customer information. 
+
+**CustomerLinkedList Class**
+```{python}  
+class Customer:
+    def __init__(self, customer_id, name, email, phone, address, country, plan, price):
+        self.customer_id = customer_id
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.address = address
+        plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]
         self.plan = plan
         self.country = country
         self.price = price
@@ -179,13 +74,34 @@ class CustomerLinkedList:
             print("Name:", current.name)
             print("Email:", current.email)
             print("Phone:", current.phone)
+            print("Address:", current.address)  # Include address
+            print("Country:", current.country)  # Include country
             print("Plans:", current.plan)
             print("Price:", current.price)
             print("------------------------")
             current = current.next
-            
-    def remove_customer(self):
-        current = self.head 
+
+    def remove_customer(self, customer_id):
+        if not self.head:
+            print("No customers in the list.")
+            return
+
+        if self.head.customer_id == customer_id:
+            self.head = self.head.next
+            print("Customer removed successfully.")
+            return
+
+        prev = None
+        current = self.head
+        while current:
+            if current.customer_id == customer_id:
+                prev.next = current.next
+                print("Customer removed successfully.")
+                return
+            prev = current
+            current = current.next
+
+        print("Customer not found.")
 
     def update_information(self, customer_id, new_name, new_email, new_phone, new_address, new_plan, new_country, new_price):
         current = self.head
@@ -225,45 +141,53 @@ class CustomerLinkedList:
             current = current.next
 
     
+```
 
+- add_customer method adds a new customer to the linked list.
+- display_customers method prints information of all customers in the linked list.
+- remove_customer method allows for the removal of a customer. 
+- update_information method updates information of a customer identified by their ID.
+- add_another_package method adds a new package to a customer's plan identified by their ID.
+- view_linked_list method prints basic information of all customers in the linked list.
+
+As you can see, this linked list gives us a good idea of what out final linked list would entail. To test out the linked list we ran it with the customers created by the faker data library. 
+
+**Phase 1 Report**
+
+```{python} 
 # Example usage:
 customer_list = CustomerLinkedList()
 customer_list.add_customer(1, "John Doe", "john@example.com", "123-456-7890", "606 Pineapple St", "Family Fun", "Brazil", 3800)
 customer_list.add_customer(2, "Jane Smith", "jane@example.com", "987-654-3210", "707 Mango St", "Explorer's Delight", "Mexico", 3100)
 customer_list.add_customer(3, "Alice Johnson", "alice@example.com", "555-123-4567", "456 Elm St", "Explorer's Delight", "Canada", 3000)
-customer_list.add_customer(4, "Bob Brown", "bob@example.com", "333-555-7777", "789 Oak St", "Budget Explore", "Australia", 2000)
-customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "202 Cedar St", "Cultural Immersion", "Spain", 3500)
-customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "303 Maple St", "Explorer's Delight", "France", 3200)
-customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "404 Birch St", "Luxury Escapes", "Italy", 5500)
-customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "505 Walnut St", "Budget Explore", "Germany", 2100)
+#customer_list.add_customer(4, "Bob Brown", "bob@example.com", "333-555-7777", "789 Oak St", "Budget Explore", "Australia", 2000)
+#customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "202 Cedar St", "Cultural Immersion", "Spain", 3500)
+#customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "303 Maple St", "Explorer's Delight", "France", 3200)
+#customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "404 Birch St", "Luxury Escapes", "Italy", 5500)
+#customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "505 Walnut St", "Budget Explore", "Germany", 2100)
 
 print("List of Customers:")
 print("------------------------")
 customer_list.display_customers()
 ```
 
-The issue with this is when a customers information is updated only the price updates not the plan as shown below. 
+There are a few issues with this report:
 
-```{python}
-# update customer informtion #only changed price 
-customer_list.update_information(1, "John Doe", "john@example.com", "123-456-7890", "606 Pineapple St", "Luxury Escape", "Brazil", 5500)
-print("List of Customers:")
-print("------------------------")
-customer_list.display_customers()
-```
+- Country and Plans are getting mixed up 
+- Plans and Price need to be linked together
+- If a plan is changed, the price is not updated
 
-Becoming aware of these difficulties led us to phase 2 - creating a double linked list to deal with the plan and price attributes not being together. 
+Becoming aware of these difficulties led us to phase 2 - creating a nested linked list to deal with the plan and price attributes not being together. 
 
-### Double Linked List
+### Phase 2 - Nested Linked List
 
 Within the double linked list there are now three classes - PlanNode, Customer and CustomerLinkedList:
 
-- The Customer class does not directly store plan and price information. Instead, it includes a linked list (plan_head) of PlanNode objects, each containing plan and price.
+- The Customer class does not directly store plan and price information. Instead, it includes a linked list of PlanNode objects, each containing plan and price.
 - Plans and their corresponding prices are set within the set_plan method based on a predefined dictionary of plan prices. This ensures consistency and easier management of plan-related data.
 - The CustomerLinkedList class still manages a linked list of customers but follows the second implementation's structure regarding plan and price storage.
 
-Below are the updated classes. 
-
+**Nested Linked List**
 ```{python}
 # create another linked list: PlanNode and link the plans and prices together
 class PlanNode:
@@ -308,20 +232,6 @@ class Customer:
                 current = current.next
             current.next = new_plan
     
-# customer linked list
-# class CustomerNode:
-#     def __init__(self, customer_id, name, email, phone, address, country, plan, price):
-#         self.customer_id = customer_id
-#         self.name = name
-#         self.email = email
-#         self.phone = phone
-#         self.address = address
-#         # plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]
-#         self.plan = plan
-#         self.country = country
-#         self.price = price
-#         self.next = None
-
 class CustomerLinkedList:
     def __init__(self):
         self.head = None
@@ -336,6 +246,27 @@ class CustomerLinkedList:
             while current.next:
                 current = current.next
             current.next = new_customer
+    def remove_customer(self, customer_id):
+        if not self.head:
+            print("No customers in the list.")
+            return
+
+        if self.head.customer_id == customer_id:
+            self.head = self.head.next
+            print("Customer removed successfully.")
+            return
+
+        prev = None
+        current = self.head
+        while current:
+            if current.customer_id == customer_id:
+                prev.next = current.next
+                print("Customer removed successfully.")
+                return
+            prev = current
+            current = current.next
+
+        print("Customer not found.")
 
     def display_customers(self):
         current = self.head
@@ -381,14 +312,15 @@ class CustomerLinkedList:
 
 Here are the updated results:
 
+**Phase 2 Report**
 ```{python}
 customer_list = CustomerLinkedList()
 
 customer_list.add_customer(1, "John Doe", "john@example.com", "123-456-7890", "123 Main St", "USA", "Explorer's Delight")
 customer_list.add_customer(2, "Jane Smith", "jane@example.com", "987-654-3210", "456 Elm St", "Canada", "Luxury Escapes")
 customer_list.add_customer(3, "Alice Johnson", "alice@example.com", "555-123-4567", "789 Oak St", "Australia", "Budget Explore")
-customer_list.add_customer(4, "Bob Brown", "bob@example.com", "333-555-7777", "101 Pine St", "UK", "Family Fun")
-customer_list.add_customer(5, "Charlie Davis", "charlie@example.com", "111-222-3333", "202 Cedar St", "Spain", "Cultural Immersion")
+#customer_list.add_customer(4, "Bob Brown", "bob@example.com", "333-555-7777", "101 Pine St", "UK", "Family Fun")
+#customer_list.add_customer(5, "Charlie Davis", "charlie@example.com", "111-222-3333", "202 Cedar St", "Spain", "Cultural Immersion")
 #customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "303 Maple St", "France", "Explorer's Delight")
 #customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "404 Birch St", "Italy", "Luxury Escapes")
 #customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "505 Walnut St", "Germany", "Budget Explore")
@@ -402,9 +334,9 @@ customer_list.display_customers()
 
 As you can see, as the plan updates so does the price. 
 
-Overall, the second implementation offers improved maintainability, flexibility, and scalability compared to the first implementation, making it a preferred choice for managing plan and price data in a customer management system. But, in an attempt to make the Linked List even better we 
+Overall, the second implementation offers improved maintainability, flexibility, and scalability compared to the first implementation, making it a preferred choice for managing plan and price data in a customer management system. But, in an attempt to make the Linked List even better we brainstormed how to allow two packages per customer. 
 
-### Final Linked List
+### Phase 3 - Final Linked List
 
 Finally, we wanted to dive deeper thinking about what could be done if a customer wanted to purchase more than one package. The code below implements adding a package plan and price to the linked list. 
 
@@ -429,27 +361,27 @@ As illustrated by the results, we have implemented the possibility to add more t
 
 **Preliminary Linked List:**
 
-- Customer and CustomerLinkedList Classes: Initially, we structured the linked list with a Customer class representing individual customers and a CustomerLinkedList class managing a list of customers.
+- Customer and CustomerLinkedList Classes - Initially, we structured the linked list with a Customer class representing individual customers and a CustomerLinkedList class managing a list of customers.
 
-- Plan Integration: Each customer had a linked list of plans associated with them, allowing for flexibility in managing multiple plans for each customer.
+- Plan Integration - Each customer had a linked list of plans associated with them, allowing for flexibility in managing multiple plans for each customer.
 
-- Set and Add Plan Methods: These methods facilitated the setting and addition of plans to customers' linked lists.
+- Set and Add Plan Methods - These methods facilitated the setting and addition of plans to customers' linked lists.
 
-- Display Customers and Update Information: Methods were provided for displaying customer information and updating it, although faced with some issues in updating plan information.
+- Display Customers and Update Information - Methods were provided for displaying customer information and updating it, although faced with some issues in updating plan information.
 
 **Double Linked List:**
 
-- Introduction of PlanNode: To address issues with updating plan information independently of prices, we introduced a PlanNode class to link plans and prices together.
+- Introduction of PlanNode - Added to address issues with updating plan information independently of prices, we introduced a PlanNode class to link plans and prices together.
 
-- Refinement of Customer Class: The Customer class was updated to store a linked list of PlanNode objects instead of directly storing plan and price attributes.
+- Refinement of Customer Class - The Customer class was updated to store a linked list of PlanNode objects instead of directly storing plan and price attributes.
 
-- Updated Methods: Methods for adding customers and displaying customer information remained the same.
+- Updated Methods - Methods for adding customers and displaying customer information remained the same.
 
 **Final Linked List:**
 
-- Enhanced Plan Addition: Recognizing the need for customers to purchase multiple plans, we implemented the ability to add additional plans and prices to customers' linked lists.
+- Enhanced Plan Addition - Recognizing the need for customers to purchase multiple plans, we implemented the ability to add additional plans and prices to customers' linked lists.
 
-- Dynamic Updates: The code provided showcases how customers' plans can be updated dynamically, allowing for flexibility in managing changing customer preferences.
+- Dynamic Updates - The code provided showcases how customers' plans can be updated dynamically, allowing for flexibility in managing changing customer preferences.
 
 
 Overall, each phase of development demonstrates a progressive refinement of our Linked List implementation. We addressed issues with functionality along the way. The final implementation provides a robust solution for managing customers and their plans, with flexibility to accommodate changes and additions over time.

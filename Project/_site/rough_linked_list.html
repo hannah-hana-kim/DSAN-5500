@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create another linked list: PlanNode and link the plans and prices together</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlanNode:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, plan, price):</span>
@@ -504,7 +504,7 @@ Plans:
 <pre><code>&lt;__main__.PlanNode object at 0x10a0f7890&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan, price):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
@@ -540,67 +540,68 @@ Plans:
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Email:"</span>, current.email)</span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Phone:"</span>, current.phone)</span>
 <span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Plans:"</span>, current.plan)</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Price:"</span>, current.price)</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> remove_customer(<span class="va">self</span>):</span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head </span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id, new_name, new_email, new_phone, new_address, new_plan, new_country, new_price):</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>                current.name <span class="op">=</span> new_name</span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>                current.elements <span class="op">=</span> new_plan</span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>                current.price <span class="op">=</span> new_price</span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer_feedback(<span class="va">self</span>, customer_id): <span class="co">#this means they have come back from their trip</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>        plans <span class="op">=</span> [<span class="st">"Explorer's Delight"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Cultural Immersion"</span>]</span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> export_all_customer_information(<span class="va">self</span>, customer_id):</span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_another_package(<span class="va">self</span>, customer_id, new_package):</span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>                current.plan.append(new_package)</span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span>current<span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>current<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"606 Pineapple St"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Brazil"</span>, <span class="dv">3800</span>)</span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">2</span>, <span class="st">"Jane Smith"</span>, <span class="st">"jane@example.com"</span>, <span class="st">"987-654-3210"</span>, <span class="st">"707 Mango St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Mexico"</span>, <span class="dv">3100</span>)</span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">3</span>, <span class="st">"Alice Johnson"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"555-123-4567"</span>, <span class="st">"456 Elm St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Canada"</span>, <span class="dv">3000</span>)</span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">4</span>, <span class="st">"Bob Brown"</span>, <span class="st">"bob@example.com"</span>, <span class="st">"333-555-7777"</span>, <span class="st">"789 Oak St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Australia"</span>, <span class="dv">2000</span>)</span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">5</span>, <span class="st">"Charlie Davis"</span>, <span class="st">"charlie@example.com"</span>, <span class="st">"111-222-3333"</span>, <span class="st">"101 Pine St"</span>, <span class="st">"Family Fun"</span>, <span class="st">"UK"</span>, <span class="dv">4000</span>)</span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">6</span>, <span class="st">"Ella Martinez"</span>, <span class="st">"ella@example.com"</span>, <span class="st">"999-888-7777"</span>, <span class="st">"202 Cedar St"</span>, <span class="st">"Cultural Immersion"</span>, <span class="st">"Spain"</span>, <span class="dv">3500</span>)</span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">7</span>, <span class="st">"Frank Wilson"</span>, <span class="st">"frank@example.com"</span>, <span class="st">"777-888-9999"</span>, <span class="st">"303 Maple St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"France"</span>, <span class="dv">3200</span>)</span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">8</span>, <span class="st">"Grace Lee"</span>, <span class="st">"grace@example.com"</span>, <span class="st">"666-555-4444"</span>, <span class="st">"404 Birch St"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Italy"</span>, <span class="dv">5500</span>)</span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">9</span>, <span class="st">"Henry Garcia"</span>, <span class="st">"henry@example.com"</span>, <span class="st">"444-333-2222"</span>, <span class="st">"505 Walnut St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Germany"</span>, <span class="dv">2100</span>)</span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Country:"</span>, current.country)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Price:"</span>, current.price)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> remove_customer(<span class="va">self</span>):</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head </span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id, new_name, new_email, new_phone, new_address, new_plan, new_country, new_price):</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>                current.name <span class="op">=</span> new_name</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>                current.elements <span class="op">=</span> new_plan</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>                current.price <span class="op">=</span> new_price</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer_feedback(<span class="va">self</span>, customer_id): <span class="co">#this means they have come back from their trip</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>        plans <span class="op">=</span> [<span class="st">"Explorer's Delight"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Cultural Immersion"</span>]</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> export_all_customer_information(<span class="va">self</span>, customer_id):</span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_another_package(<span class="va">self</span>, customer_id, new_package):</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>                current.plan.append(new_package)</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span>current<span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>current<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"606 Pineapple St"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Brazil"</span>, <span class="dv">3800</span>)</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">2</span>, <span class="st">"Jane Smith"</span>, <span class="st">"jane@example.com"</span>, <span class="st">"987-654-3210"</span>, <span class="st">"707 Mango St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Mexico"</span>, <span class="dv">3100</span>)</span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">3</span>, <span class="st">"Alice Johnson"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"555-123-4567"</span>, <span class="st">"456 Elm St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Canada"</span>, <span class="dv">3000</span>)</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">4</span>, <span class="st">"Bob Brown"</span>, <span class="st">"bob@example.com"</span>, <span class="st">"333-555-7777"</span>, <span class="st">"789 Oak St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Australia"</span>, <span class="dv">2000</span>)</span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">5</span>, <span class="st">"Charlie Davis"</span>, <span class="st">"charlie@example.com"</span>, <span class="st">"111-222-3333"</span>, <span class="st">"101 Pine St"</span>, <span class="st">"Family Fun"</span>, <span class="st">"UK"</span>, <span class="dv">4000</span>)</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">6</span>, <span class="st">"Ella Martinez"</span>, <span class="st">"ella@example.com"</span>, <span class="st">"999-888-7777"</span>, <span class="st">"202 Cedar St"</span>, <span class="st">"Cultural Immersion"</span>, <span class="st">"Spain"</span>, <span class="dv">3500</span>)</span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">7</span>, <span class="st">"Frank Wilson"</span>, <span class="st">"frank@example.com"</span>, <span class="st">"777-888-9999"</span>, <span class="st">"303 Maple St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"France"</span>, <span class="dv">3200</span>)</span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">8</span>, <span class="st">"Grace Lee"</span>, <span class="st">"grace@example.com"</span>, <span class="st">"666-555-4444"</span>, <span class="st">"404 Birch St"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Italy"</span>, <span class="dv">5500</span>)</span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">9</span>, <span class="st">"Henry Garcia"</span>, <span class="st">"henry@example.com"</span>, <span class="st">"444-333-2222"</span>, <span class="st">"505 Walnut St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Germany"</span>, <span class="dv">2100</span>)</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of Customers:
 ------------------------
@@ -608,63 +609,72 @@ Customer ID: 1
 Name: John Doe
 Email: john@example.com
 Phone: 123-456-7890
-Plans: Family Fun
+Plans: Brazil
+Country: Family Fun
 Price: 3800
 ------------------------
 Customer ID: 2
 Name: Jane Smith
 Email: jane@example.com
 Phone: 987-654-3210
-Plans: Explorer's Delight
+Plans: Mexico
+Country: Explorer's Delight
 Price: 3100
 ------------------------
 Customer ID: 3
 Name: Alice Johnson
 Email: alice@example.com
 Phone: 555-123-4567
-Plans: Explorer's Delight
+Plans: Canada
+Country: Explorer's Delight
 Price: 3000
 ------------------------
 Customer ID: 4
 Name: Bob Brown
 Email: bob@example.com
 Phone: 333-555-7777
-Plans: Budget Explore
+Plans: Australia
+Country: Budget Explore
 Price: 2000
 ------------------------
 Customer ID: 5
 Name: Charlie Davis
 Email: charlie@example.com
 Phone: 111-222-3333
-Plans: Family Fun
+Plans: UK
+Country: Family Fun
 Price: 4000
 ------------------------
 Customer ID: 6
 Name: Ella Martinez
 Email: ella@example.com
 Phone: 999-888-7777
-Plans: Cultural Immersion
+Plans: Spain
+Country: Cultural Immersion
 Price: 3500
 ------------------------
 Customer ID: 7
 Name: Frank Wilson
 Email: frank@example.com
 Phone: 777-888-9999
-Plans: Explorer's Delight
+Plans: France
+Country: Explorer's Delight
 Price: 3200
 ------------------------
 Customer ID: 8
 Name: Grace Lee
 Email: grace@example.com
 Phone: 666-555-4444
-Plans: Luxury Escapes
+Plans: Italy
+Country: Luxury Escapes
 Price: 5500
 ------------------------
 Customer ID: 9
 Name: Henry Garcia
 Email: henry@example.com
 Phone: 444-333-2222
-Plans: Budget Explore
+Plans: Germany
+Country: Budget Explore
 Price: 2100
 ------------------------</code></pre>
 </div>

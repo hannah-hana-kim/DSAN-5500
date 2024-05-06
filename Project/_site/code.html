@@ -160,9 +160,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#preliminary-linked-list" id="toc-preliminary-linked-list" class="nav-link active" data-scroll-target="#preliminary-linked-list">Preliminary Linked List</a></li>
-  <li><a href="#double-linked-list" id="toc-double-linked-list" class="nav-link" data-scroll-target="#double-linked-list">Double Linked List</a></li>
-  <li><a href="#final-linked-list" id="toc-final-linked-list" class="nav-link" data-scroll-target="#final-linked-list">Final Linked List</a></li>
+  <li><a href="#phase-1---preliminary-linked-list" id="toc-phase-1---preliminary-linked-list" class="nav-link active" data-scroll-target="#phase-1---preliminary-linked-list">Phase 1 - Preliminary Linked List</a></li>
+  <li><a href="#phase-2---nested-linked-list" id="toc-phase-2---nested-linked-list" class="nav-link" data-scroll-target="#phase-2---nested-linked-list">Phase 2 - Nested Linked List</a></li>
+  <li><a href="#phase-3---final-linked-list" id="toc-phase-3---final-linked-list" class="nav-link" data-scroll-target="#phase-3---final-linked-list">Phase 3 - Final Linked List</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
@@ -190,240 +190,166 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This project included three phases of Linked Lists</p>
 <ol type="1">
 <li>Preliminary Linked List</li>
-<li>Double Linked List Structure</li>
+<li>Nested Linked List</li>
 <li>Final Linked List</li>
 </ol>
-<section id="preliminary-linked-list" class="level3">
-<h3 class="anchored" data-anchor-id="preliminary-linked-list">Preliminary Linked List</h3>
-<p>Within the preliminary linked list we decided how the linked list would be structured. Within this page we will walkthrough our thought process and the code we have written in each phase.</p>
-<p>This linked list was structured into two classes customerclass and customer linked list class.</p>
-<p>First is the customerclass which initialized the customer and plan functionality. This implementation allows each customer to have a linked list of plans associated with them.</p>
+<p>Within this page we will walkthrough our thought process and the code we have written in each phase. The three phases built off of eachother and possible issues that could arise wihthin this hypothetical CRM System.</p>
+<section id="phase-1---preliminary-linked-list" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1---preliminary-linked-list">Phase 1 - Preliminary Linked List</h3>
+<p>Within the preliminary linked list we decided how the linked list would be structured.</p>
+<p>This linked list was structured into two classes customerclass and customerlinkedlist class.</p>
+<p>First is the customerclass which initialized the customer and plan functionality. This implementation allows each customer to have a list of information associated with them.</p>
+<p><strong>Customer Class</strong></p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan, price):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.email <span class="op">=</span> email</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.phone <span class="op">=</span> phone</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.address <span class="op">=</span> address</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.country <span class="op">=</span> country</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan_head <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.set_plan(plan)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> set_plan(<span class="va">self</span>, plan):</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        plans_price <span class="op">=</span> {</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Explorer's Delight"</span>: <span class="dv">3500</span>, </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Luxury Escapes"</span>: <span class="dv">5500</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Budget Explore"</span>: <span class="dv">2000</span>, </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Family Fun"</span>: <span class="dv">4000</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Cultural Immersion"</span>: <span class="dv">3000</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> plan <span class="kw">not</span> <span class="kw">in</span> plans_price:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid plan"</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.add_plan(plan, plans_price[plan])</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_plan(<span class="va">self</span>, plan, price):</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        new_plan <span class="op">=</span> PlanNode(plan, price)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.plan_head:</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.plan_head <span class="op">=</span> new_plan</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.plan_head</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_plan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        plans <span class="op">=</span> [<span class="st">"Explorer's Delight"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Cultural Immersion"</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan <span class="op">=</span> plan</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.country <span class="op">=</span> country</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>This class integrates the plan functionality. Each customer now has a plan_head attribute pointing to the head of their plan linked list. The set_plan method sets the initial plan for the customer, while the add_plan method adds new plans to the end of the linked list.</p>
-<p>Next is the Customer Linked List that includes represents a linked list of customers.</p>
+<p>Next is the Customer Linked List that includes functions that can edit customer information.</p>
+<p><strong>CustomerLinkedList Class</strong></p>
 <div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># customer linked list</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># class CustomerNode:</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     def __init__(self, customer_id, name, email, phone, address, country, plan, price):</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.customer_id = customer_id</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.name = name</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.email = email</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.phone = phone</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.address = address</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#         # plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.plan = plan</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.country = country</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.price = price</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.next = None</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerLinkedList:</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan):</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        new_customer <span class="op">=</span> Customer(customer_id, name, email, phone, address, country, plan)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> new_customer</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_customer</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_customers(<span class="va">self</span>):</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer ID:"</span>, current.customer_id)</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Name:"</span>, current.name)</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Email:"</span>, current.email)</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Phone:"</span>, current.phone)</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Address:"</span>, current.address)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Country:"</span>, current.country)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Plans:"</span>)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>            plan_current <span class="op">=</span> current.plan_head</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> plan_current:</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"- Plan:"</span>, plan_current.plan)</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"  Price:"</span>, plan_current.price)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>                plan_current <span class="op">=</span> plan_current.<span class="bu">next</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span>current<span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>current<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id, new_name, new_email, new_phone, new_address, new_country, new_plan_name):</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                current.name <span class="op">=</span> new_name</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>                current.plan_head <span class="op">=</span> <span class="va">None</span>  </span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>                current.set_plan(new_plan_name)  </span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Customer not found."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan, price):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.email <span class="op">=</span> email</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.phone <span class="op">=</span> phone</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.address <span class="op">=</span> address</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        plans <span class="op">=</span> [<span class="st">"Explorer's Delight"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Cultural Immersion"</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan <span class="op">=</span> plan</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.country <span class="op">=</span> country</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerLinkedList:</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer(<span class="va">self</span>, customer_id, name, email, phone, address, plan, country, price):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        new_customer <span class="op">=</span> Customer(customer_id, name, email, phone, address, plan, country, price)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> new_customer </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_customer</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_customers(<span class="va">self</span>):</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer ID:"</span>, current.customer_id)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Name:"</span>, current.name)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Email:"</span>, current.email)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Phone:"</span>, current.phone)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Address:"</span>, current.address)  <span class="co"># Include address</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Country:"</span>, current.country)  <span class="co"># Include country</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Plans:"</span>, current.plan)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Price:"</span>, current.price)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> remove_customer(<span class="va">self</span>, customer_id):</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"No customers in the list."</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.head.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> <span class="va">self</span>.head.<span class="bu">next</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer removed successfully."</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        prev <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                prev.<span class="bu">next</span> <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"Customer removed successfully."</span>)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>            prev <span class="op">=</span> current</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Customer not found."</span>)</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id, new_name, new_email, new_phone, new_address, new_plan, new_country, new_price):</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>                current.name <span class="op">=</span> new_name</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>                current.plan <span class="op">=</span> new_plan</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>                current.price <span class="op">=</span> new_price</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer_feedback(<span class="va">self</span>, customer_id): <span class="co">#this means they have come back from their trip</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>        plans <span class="op">=</span> [<span class="st">"Explorer's Delight"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Cultural Immersion"</span>]</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> export_all_customer_information(<span class="va">self</span>, customer_id):</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_another_package(<span class="va">self</span>, customer_id, new_package):</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>                current.plan.append(new_package)</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span>current<span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>current<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ul>
-<li>The <strong>init</strong> method initializes the linked list with a head set to None.</li>
 <li>add_customer method adds a new customer to the linked list.</li>
 <li>display_customers method prints information of all customers in the linked list.</li>
-<li>remove_customer method is incomplete. It should remove a customer from the linked list, but it lacks implementation.</li>
+<li>remove_customer method allows for the removal of a customer.</li>
 <li>update_information method updates information of a customer identified by their ID.</li>
-<li>add_customer_feedback method is stubbed out and needs implementation.</li>
-<li>export_all_customer_information method is stubbed out and needs implementation.</li>
 <li>add_another_package method adds a new package to a customer’s plan identified by their ID.</li>
 <li>view_linked_list method prints basic information of all customers in the linked list.</li>
 </ul>
 <p>As you can see, this linked list gives us a good idea of what out final linked list would entail. To test out the linked list we ran it with the customers created by the faker data library.</p>
+<p><strong>Phase 1 Report</strong></p>
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan, price):</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.email <span class="op">=</span> email</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.phone <span class="op">=</span> phone</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.address <span class="op">=</span> address</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan <span class="op">=</span> plan</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.country <span class="op">=</span> country</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerLinkedList:</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer(<span class="va">self</span>, customer_id, name, email, phone, address, plan, country, price):</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        new_customer <span class="op">=</span> Customer(customer_id, name, email, phone, address, plan, country, price)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> new_customer </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_customer</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_customers(<span class="va">self</span>):</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer ID:"</span>, current.customer_id)</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Name:"</span>, current.name)</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Email:"</span>, current.email)</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Phone:"</span>, current.phone)</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Plans:"</span>, current.plan)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Price:"</span>, current.price)</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> remove_customer(<span class="va">self</span>):</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head </span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id, new_name, new_email, new_phone, new_address, new_plan, new_country, new_price):</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>                current.name <span class="op">=</span> new_name</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>                current.plan <span class="op">=</span> new_plan</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>                current.price <span class="op">=</span> new_price</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer_feedback(<span class="va">self</span>, customer_id): <span class="co">#this means they have come back from their trip</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>        plans <span class="op">=</span> [<span class="st">"Explorer's Delight"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Cultural Immersion"</span>]</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> export_all_customer_information(<span class="va">self</span>, customer_id):</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_another_package(<span class="va">self</span>, customer_id, new_package):</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>                current.plan.append(new_package)</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span>current<span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>current<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"606 Pineapple St"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Brazil"</span>, <span class="dv">3800</span>)</span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">2</span>, <span class="st">"Jane Smith"</span>, <span class="st">"jane@example.com"</span>, <span class="st">"987-654-3210"</span>, <span class="st">"707 Mango St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Mexico"</span>, <span class="dv">3100</span>)</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">3</span>, <span class="st">"Alice Johnson"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"555-123-4567"</span>, <span class="st">"456 Elm St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Canada"</span>, <span class="dv">3000</span>)</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">4</span>, <span class="st">"Bob Brown"</span>, <span class="st">"bob@example.com"</span>, <span class="st">"333-555-7777"</span>, <span class="st">"789 Oak St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Australia"</span>, <span class="dv">2000</span>)</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">6</span>, <span class="st">"Ella Martinez"</span>, <span class="st">"ella@example.com"</span>, <span class="st">"999-888-7777"</span>, <span class="st">"202 Cedar St"</span>, <span class="st">"Cultural Immersion"</span>, <span class="st">"Spain"</span>, <span class="dv">3500</span>)</span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">7</span>, <span class="st">"Frank Wilson"</span>, <span class="st">"frank@example.com"</span>, <span class="st">"777-888-9999"</span>, <span class="st">"303 Maple St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"France"</span>, <span class="dv">3200</span>)</span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">8</span>, <span class="st">"Grace Lee"</span>, <span class="st">"grace@example.com"</span>, <span class="st">"666-555-4444"</span>, <span class="st">"404 Birch St"</span>, <span class="st">"Luxury Escapes"</span>, <span class="st">"Italy"</span>, <span class="dv">5500</span>)</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">9</span>, <span class="st">"Henry Garcia"</span>, <span class="st">"henry@example.com"</span>, <span class="st">"444-333-2222"</span>, <span class="st">"505 Walnut St"</span>, <span class="st">"Budget Explore"</span>, <span class="st">"Germany"</span>, <span class="dv">2100</span>)</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"606 Pineapple St"</span>, <span class="st">"Family Fun"</span>, <span class="st">"Brazil"</span>, <span class="dv">3800</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">2</span>, <span class="st">"Jane Smith"</span>, <span class="st">"jane@example.com"</span>, <span class="st">"987-654-3210"</span>, <span class="st">"707 Mango St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Mexico"</span>, <span class="dv">3100</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">3</span>, <span class="st">"Alice Johnson"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"555-123-4567"</span>, <span class="st">"456 Elm St"</span>, <span class="st">"Explorer's Delight"</span>, <span class="st">"Canada"</span>, <span class="dv">3000</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(4, "Bob Brown", "bob@example.com", "333-555-7777", "789 Oak St", "Budget Explore", "Australia", 2000)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "202 Cedar St", "Cultural Immersion", "Spain", 3500)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "303 Maple St", "Explorer's Delight", "France", 3200)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "404 Birch St", "Luxury Escapes", "Italy", 5500)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "505 Walnut St", "Budget Explore", "Germany", 2100)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of Customers:
@@ -432,6 +358,8 @@ Customer ID: 1
 Name: John Doe
 Email: john@example.com
 Phone: 123-456-7890
+Address: 606 Pineapple St
+Country: Family Fun
 Plans: Brazil
 Price: 3800
 ------------------------
@@ -439,6 +367,8 @@ Customer ID: 2
 Name: Jane Smith
 Email: jane@example.com
 Phone: 987-654-3210
+Address: 707 Mango St
+Country: Explorer's Delight
 Plans: Mexico
 Price: 3100
 ------------------------
@@ -446,265 +376,175 @@ Customer ID: 3
 Name: Alice Johnson
 Email: alice@example.com
 Phone: 555-123-4567
+Address: 456 Elm St
+Country: Explorer's Delight
 Plans: Canada
 Price: 3000
-------------------------
-Customer ID: 4
-Name: Bob Brown
-Email: bob@example.com
-Phone: 333-555-7777
-Plans: Australia
-Price: 2000
-------------------------
-Customer ID: 6
-Name: Ella Martinez
-Email: ella@example.com
-Phone: 999-888-7777
-Plans: Spain
-Price: 3500
-------------------------
-Customer ID: 7
-Name: Frank Wilson
-Email: frank@example.com
-Phone: 777-888-9999
-Plans: France
-Price: 3200
-------------------------
-Customer ID: 8
-Name: Grace Lee
-Email: grace@example.com
-Phone: 666-555-4444
-Plans: Italy
-Price: 5500
-------------------------
-Customer ID: 9
-Name: Henry Garcia
-Email: henry@example.com
-Phone: 444-333-2222
-Plans: Germany
-Price: 2100
 ------------------------</code></pre>
 </div>
 </div>
-<p>The issue with this is when a customers information is updated only the price updates not the plan as shown below.</p>
-<div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update customer informtion #only changed price </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>customer_list.update_information(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"606 Pineapple St"</span>, <span class="st">"Luxury Escape"</span>, <span class="st">"Brazil"</span>, <span class="dv">5500</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>List of Customers:
-------------------------
-Customer ID: 1
-Name: John Doe
-Email: john@example.com
-Phone: 123-456-7890
-Plans: Luxury Escape
-Price: 5500
-------------------------
-Customer ID: 2
-Name: Jane Smith
-Email: jane@example.com
-Phone: 987-654-3210
-Plans: Mexico
-Price: 3100
-------------------------
-Customer ID: 3
-Name: Alice Johnson
-Email: alice@example.com
-Phone: 555-123-4567
-Plans: Canada
-Price: 3000
-------------------------
-Customer ID: 4
-Name: Bob Brown
-Email: bob@example.com
-Phone: 333-555-7777
-Plans: Australia
-Price: 2000
-------------------------
-Customer ID: 6
-Name: Ella Martinez
-Email: ella@example.com
-Phone: 999-888-7777
-Plans: Spain
-Price: 3500
-------------------------
-Customer ID: 7
-Name: Frank Wilson
-Email: frank@example.com
-Phone: 777-888-9999
-Plans: France
-Price: 3200
-------------------------
-Customer ID: 8
-Name: Grace Lee
-Email: grace@example.com
-Phone: 666-555-4444
-Plans: Italy
-Price: 5500
-------------------------
-Customer ID: 9
-Name: Henry Garcia
-Email: henry@example.com
-Phone: 444-333-2222
-Plans: Germany
-Price: 2100
-------------------------</code></pre>
-</div>
-</div>
-<p>Becoming aware of these difficulties led us to phase 2 - creating a double linked list to deal with the plan and price attributes not being together.</p>
+<p>There are a few issues with this report:</p>
+<ul>
+<li>Country and Plans are getting mixed up</li>
+<li>Plans and Price need to be linked together</li>
+<li>If a plan is changed, the price is not updated</li>
+</ul>
+<p>Becoming aware of these difficulties led us to phase 2 - creating a nested linked list to deal with the plan and price attributes not being together.</p>
 </section>
-<section id="double-linked-list" class="level3">
-<h3 class="anchored" data-anchor-id="double-linked-list">Double Linked List</h3>
+<section id="phase-2---nested-linked-list" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2---nested-linked-list">Phase 2 - Nested Linked List</h3>
 <p>Within the double linked list there are now three classes - PlanNode, Customer and CustomerLinkedList:</p>
 <ul>
-<li>The Customer class does not directly store plan and price information. Instead, it includes a linked list (plan_head) of PlanNode objects, each containing plan and price.</li>
+<li>The Customer class does not directly store plan and price information. Instead, it includes a linked list of PlanNode objects, each containing plan and price.</li>
 <li>Plans and their corresponding prices are set within the set_plan method based on a predefined dictionary of plan prices. This ensures consistency and easier management of plan-related data.</li>
 <li>The CustomerLinkedList class still manages a linked list of customers but follows the second implementation’s structure regarding plan and price storage.</li>
 </ul>
-<p>Below are the updated classes.</p>
-<div class="cell" data-execution_count="5">
+<p><strong>Nested Linked List</strong></p>
+<div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create another linked list: PlanNode and link the plans and prices together</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlanNode:</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, plan, price):</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan <span class="op">=</span> plan</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan):</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.email <span class="op">=</span> email</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.phone <span class="op">=</span> phone</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.address <span class="op">=</span> address</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.country <span class="op">=</span> country</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan_head <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.set_plan(plan)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> set_plan(<span class="va">self</span>, plan):</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        plans_price <span class="op">=</span> {</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Explorer's Delight"</span>: <span class="dv">3500</span>, </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Luxury Escapes"</span>: <span class="dv">5500</span>,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Budget Explore"</span>: <span class="dv">2000</span>, </span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Family Fun"</span>: <span class="dv">4000</span>,</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Cultural Immersion"</span>: <span class="dv">3000</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> plan <span class="kw">not</span> <span class="kw">in</span> plans_price:</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid plan"</span>)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.add_plan(plan, plans_price[plan])</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_plan(<span class="va">self</span>, plan, price):</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        new_plan <span class="op">=</span> PlanNode(plan, price)</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.plan_head:</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.plan_head <span class="op">=</span> new_plan</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.plan_head</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_plan</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co"># customer linked list</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co"># class CustomerNode:</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co">#     def __init__(self, customer_id, name, email, phone, address, country, plan, price):</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.customer_id = customer_id</span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.name = name</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.email = email</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.phone = phone</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.address = address</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co">#         # plans = ["Explorer's Delight", "Luxury Escapes", "Budget Explore", "Family Fun", "Cultural Immersion"]</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.plan = plan</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.country = country</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.price = price</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.next = None</span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerLinkedList:</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan):</span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>        new_customer <span class="op">=</span> Customer(customer_id, name, email, phone, address, country, plan)</span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> new_customer</span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_customer</span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_customers(<span class="va">self</span>):</span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer ID:"</span>, current.customer_id)</span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Name:"</span>, current.name)</span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Email:"</span>, current.email)</span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Phone:"</span>, current.phone)</span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Address:"</span>, current.address)</span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Country:"</span>, current.country)</span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Plans:"</span>)</span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>            plan_current <span class="op">=</span> current.plan_head</span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> plan_current:</span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"- Plan:"</span>, plan_current.plan)</span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"  Price:"</span>, plan_current.price)</span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>                plan_current <span class="op">=</span> plan_current.<span class="bu">next</span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span>current<span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>current<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id, new_name, new_email, new_phone, new_address, new_country, new_plan_name):</span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>                current.name <span class="op">=</span> new_name</span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
-<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>                current.plan_head <span class="op">=</span> <span class="va">None</span>  </span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>                current.set_plan(new_plan_name)  </span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Customer not found."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create another linked list: PlanNode and link the plans and prices together</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlanNode:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, plan, price):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan <span class="op">=</span> plan</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan):</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.email <span class="op">=</span> email</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.phone <span class="op">=</span> phone</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.address <span class="op">=</span> address</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.country <span class="op">=</span> country</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plan_head <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.set_plan(plan)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> set_plan(<span class="va">self</span>, plan):</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        plans_price <span class="op">=</span> {</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Explorer's Delight"</span>: <span class="dv">3500</span>, </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Luxury Escapes"</span>: <span class="dv">5500</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Budget Explore"</span>: <span class="dv">2000</span>, </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Family Fun"</span>: <span class="dv">4000</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Cultural Immersion"</span>: <span class="dv">3000</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> plan <span class="kw">not</span> <span class="kw">in</span> plans_price:</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid plan"</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.add_plan(plan, plans_price[plan])</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_plan(<span class="va">self</span>, plan, price):</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        new_plan <span class="op">=</span> PlanNode(plan, price)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.plan_head:</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.plan_head <span class="op">=</span> new_plan</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.plan_head</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_plan</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerLinkedList:</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_customer(<span class="va">self</span>, customer_id, name, email, phone, address, country, plan):</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        new_customer <span class="op">=</span> Customer(customer_id, name, email, phone, address, country, plan)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> new_customer</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> current.<span class="bu">next</span>:</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> new_customer</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> remove_customer(<span class="va">self</span>, customer_id):</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.head:</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"No customers in the list."</span>)</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.head.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.head <span class="op">=</span> <span class="va">self</span>.head.<span class="bu">next</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer removed successfully."</span>)</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>        prev <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>                prev.<span class="bu">next</span> <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"Customer removed successfully."</span>)</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>            prev <span class="op">=</span> current</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Customer not found."</span>)</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_customers(<span class="va">self</span>):</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Customer ID:"</span>, current.customer_id)</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Name:"</span>, current.name)</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Email:"</span>, current.email)</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Phone:"</span>, current.phone)</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Address:"</span>, current.address)</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Country:"</span>, current.country)</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Plans:"</span>)</span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>            plan_current <span class="op">=</span> current.plan_head</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> plan_current:</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"- Plan:"</span>, plan_current.plan)</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"  Price:"</span>, plan_current.price)</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>                plan_current <span class="op">=</span> plan_current.<span class="bu">next</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> view_linked_list(<span class="va">self</span>):</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span>current<span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>current<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_information(<span class="va">self</span>, customer_id, new_name, new_email, new_phone, new_address, new_country, new_plan_name):</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current.customer_id <span class="op">==</span> customer_id:</span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>                current.name <span class="op">=</span> new_name</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>                current.email <span class="op">=</span> new_email</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>                current.phone <span class="op">=</span> new_phone</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>                current.address <span class="op">=</span> new_address</span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>                current.country <span class="op">=</span> new_country</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>                current.plan_head <span class="op">=</span> <span class="va">None</span>  </span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>                current.set_plan(new_plan_name)  </span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Customer not found."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Here are the updated results:</p>
-<div class="cell" data-execution_count="6">
+<p><strong>Phase 2 Report</strong></p>
+<div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"123 Main St"</span>, <span class="st">"USA"</span>, <span class="st">"Explorer's Delight"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">2</span>, <span class="st">"Jane Smith"</span>, <span class="st">"jane@example.com"</span>, <span class="st">"987-654-3210"</span>, <span class="st">"456 Elm St"</span>, <span class="st">"Canada"</span>, <span class="st">"Luxury Escapes"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">3</span>, <span class="st">"Alice Johnson"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"555-123-4567"</span>, <span class="st">"789 Oak St"</span>, <span class="st">"Australia"</span>, <span class="st">"Budget Explore"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">4</span>, <span class="st">"Bob Brown"</span>, <span class="st">"bob@example.com"</span>, <span class="st">"333-555-7777"</span>, <span class="st">"101 Pine St"</span>, <span class="st">"UK"</span>, <span class="st">"Family Fun"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">5</span>, <span class="st">"Charlie Davis"</span>, <span class="st">"charlie@example.com"</span>, <span class="st">"111-222-3333"</span>, <span class="st">"202 Cedar St"</span>, <span class="st">"Spain"</span>, <span class="st">"Cultural Immersion"</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "303 Maple St", "France", "Explorer's Delight")</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "404 Birch St", "Italy", "Luxury Escapes")</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "505 Walnut St", "Germany", "Budget Explore")</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "606 Pineapple St", "Brazil", "Family Fun")</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(10, "Isabella Rodriguez", "isabella@example.com", "222-333-4444", "707 Mango St", "Mexico", "Cultural Immersion")</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>customer_list <span class="op">=</span> CustomerLinkedList()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>, <span class="st">"123-456-7890"</span>, <span class="st">"123 Main St"</span>, <span class="st">"USA"</span>, <span class="st">"Explorer's Delight"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">2</span>, <span class="st">"Jane Smith"</span>, <span class="st">"jane@example.com"</span>, <span class="st">"987-654-3210"</span>, <span class="st">"456 Elm St"</span>, <span class="st">"Canada"</span>, <span class="st">"Luxury Escapes"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>customer_list.add_customer(<span class="dv">3</span>, <span class="st">"Alice Johnson"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"555-123-4567"</span>, <span class="st">"789 Oak St"</span>, <span class="st">"Australia"</span>, <span class="st">"Budget Explore"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(4, "Bob Brown", "bob@example.com", "333-555-7777", "101 Pine St", "UK", "Family Fun")</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(5, "Charlie Davis", "charlie@example.com", "111-222-3333", "202 Cedar St", "Spain", "Cultural Immersion")</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(6, "Ella Martinez", "ella@example.com", "999-888-7777", "303 Maple St", "France", "Explorer's Delight")</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(7, "Frank Wilson", "frank@example.com", "777-888-9999", "404 Birch St", "Italy", "Luxury Escapes")</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(8, "Grace Lee", "grace@example.com", "666-555-4444", "505 Walnut St", "Germany", "Budget Explore")</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(9, "Henry Garcia", "henry@example.com", "444-333-2222", "606 Pineapple St", "Brazil", "Family Fun")</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#customer_list.add_customer(10, "Isabella Rodriguez", "isabella@example.com", "222-333-4444", "707 Mango St", "Mexico", "Cultural Immersion")</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List of Customers:"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of Customers:
@@ -738,49 +578,29 @@ Country: Australia
 Plans:
 - Plan: Budget Explore
   Price: 2000
-------------------------
-Customer ID: 4
-Name: Bob Brown
-Email: bob@example.com
-Phone: 333-555-7777
-Address: 101 Pine St
-Country: UK
-Plans:
-- Plan: Family Fun
-  Price: 4000
-------------------------
-Customer ID: 5
-Name: Charlie Davis
-Email: charlie@example.com
-Phone: 111-222-3333
-Address: 202 Cedar St
-Country: Spain
-Plans:
-- Plan: Cultural Immersion
-  Price: 3000
 ------------------------</code></pre>
 </div>
 </div>
 <p>As you can see, as the plan updates so does the price.</p>
-<p>Overall, the second implementation offers improved maintainability, flexibility, and scalability compared to the first implementation, making it a preferred choice for managing plan and price data in a customer management system. But, in an attempt to make the Linked List even better we</p>
+<p>Overall, the second implementation offers improved maintainability, flexibility, and scalability compared to the first implementation, making it a preferred choice for managing plan and price data in a customer management system. But, in an attempt to make the Linked List even better we brainstormed how to allow two packages per customer.</p>
 </section>
-<section id="final-linked-list" class="level3">
-<h3 class="anchored" data-anchor-id="final-linked-list">Final Linked List</h3>
+<section id="phase-3---final-linked-list" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3---final-linked-list">Phase 3 - Final Linked List</h3>
 <p>Finally, we wanted to dive deeper thinking about what could be done if a customer wanted to purchase more than one package. The code below implements adding a package plan and price to the linked list.</p>
 <p>This was created to address that this linked list will get complicated very quickly and customers will often change their mind or purchase from the company again.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>current_customer <span class="op">=</span> customer_list.head</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> current_customer:</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> current_customer.customer_id <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        current_customer.add_plan(<span class="st">"Budget Explore"</span>, <span class="dv">5000</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    current_customer <span class="op">=</span> current_customer.<span class="bu">next</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Updated Customers:"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>current_customer <span class="op">=</span> customer_list.head</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> current_customer:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> current_customer.customer_id <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        current_customer.add_plan(<span class="st">"Budget Explore"</span>, <span class="dv">5000</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    current_customer <span class="op">=</span> current_customer.<span class="bu">next</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Updated Customers:"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"------------------------"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>customer_list.display_customers() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Updated Customers:
@@ -816,26 +636,6 @@ Country: Australia
 Plans:
 - Plan: Budget Explore
   Price: 2000
-------------------------
-Customer ID: 4
-Name: Bob Brown
-Email: bob@example.com
-Phone: 333-555-7777
-Address: 101 Pine St
-Country: UK
-Plans:
-- Plan: Family Fun
-  Price: 4000
-------------------------
-Customer ID: 5
-Name: Charlie Davis
-Email: charlie@example.com
-Phone: 111-222-3333
-Address: 202 Cedar St
-Country: Spain
-Plans:
-- Plan: Cultural Immersion
-  Price: 3000
 ------------------------</code></pre>
 </div>
 </div>
@@ -845,23 +645,23 @@ Plans:
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p><strong>Preliminary Linked List:</strong></p>
 <ul>
-<li><p>Customer and CustomerLinkedList Classes: Initially, we structured the linked list with a Customer class representing individual customers and a CustomerLinkedList class managing a list of customers.</p></li>
-<li><p>Plan Integration: Each customer had a linked list of plans associated with them, allowing for flexibility in managing multiple plans for each customer.</p></li>
-<li><p>Set and Add Plan Methods: These methods facilitated the setting and addition of plans to customers’ linked lists.</p></li>
-<li><p>Display Customers and Update Information: Methods were provided for displaying customer information and updating it, although faced with some issues in updating plan information.</p></li>
+<li><p>Customer and CustomerLinkedList Classes - Initially, we structured the linked list with a Customer class representing individual customers and a CustomerLinkedList class managing a list of customers.</p></li>
+<li><p>Plan Integration - Each customer had a linked list of plans associated with them, allowing for flexibility in managing multiple plans for each customer.</p></li>
+<li><p>Set and Add Plan Methods - These methods facilitated the setting and addition of plans to customers’ linked lists.</p></li>
+<li><p>Display Customers and Update Information - Methods were provided for displaying customer information and updating it, although faced with some issues in updating plan information.</p></li>
 </ul>
 <p><strong>Double Linked List:</strong></p>
 <ul>
-<li>Introduction of PlanNode: To address issues with updating plan information independently of prices, we introduced a PlanNode class to link plans and prices together.</li>
-<li>Refinement of Customer Class: The Customer class was updated to store a linked list of PlanNode objects instead of directly storing plan and price attributes.</li>
-<li>Updated Methods: Methods for adding customers and displaying customer information remained largely the same.</li>
+<li><p>Introduction of PlanNode - Added to address issues with updating plan information independently of prices, we introduced a PlanNode class to link plans and prices together.</p></li>
+<li><p>Refinement of Customer Class - The Customer class was updated to store a linked list of PlanNode objects instead of directly storing plan and price attributes.</p></li>
+<li><p>Updated Methods - Methods for adding customers and displaying customer information remained the same.</p></li>
 </ul>
 <p><strong>Final Linked List:</strong></p>
 <ul>
-<li>Enhanced Plan Addition: Recognizing the need for customers to purchase multiple plans, we implemented the ability to add additional plans and prices to customers’ linked lists.</li>
-<li>Dynamic Updates: The code provided showcases how customers’ plans can be updated dynamically, allowing for flexibility in managing changing customer preferences.</li>
+<li><p>Enhanced Plan Addition - Recognizing the need for customers to purchase multiple plans, we implemented the ability to add additional plans and prices to customers’ linked lists.</p></li>
+<li><p>Dynamic Updates - The code provided showcases how customers’ plans can be updated dynamically, allowing for flexibility in managing changing customer preferences.</p></li>
 </ul>
-<p>Overall, each phase of development demonstrates a progressive refinement of your Linked List implementation, addressing issues and improving functionality along the way. The final implementation provides a robust solution for managing customers and their plans, with flexibility to accommodate changes and additions over time.</p>
+<p>Overall, each phase of development demonstrates a progressive refinement of our Linked List implementation. We addressed issues with functionality along the way. The final implementation provides a robust solution for managing customers and their plans, with flexibility to accommodate changes and additions over time.</p>
 
 
 </section>
