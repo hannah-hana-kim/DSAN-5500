@@ -1,5 +1,5 @@
 ---
-title: DSAN5500 Final Project
+title: Mastering CRM Systems - A Deep Dive into CRM Systems and Data Structures
 ---
 
 ### Question #3 Exploring Applications

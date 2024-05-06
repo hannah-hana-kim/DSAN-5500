@@ -2,7 +2,7 @@
   {
     "objectID": "Project.html",
     "href": "Project.html",
-    "title": "DSAN5500 Final Project",
+    "title": "Mastering CRM Systems - A Deep Dive into CRM Systems and Data Structures",
     "section": "",
     "text": "Question #3 Exploring Applications\nExploration: Examining different applications of the data structure that make it helpful for particular fields\nTopic Chosen:\nCustomer Relationship Management Systems\nIdentify a substantive application of that topic in a field you are interested in: e.g., bioinformatics, marketing, finance, NLP, image processing, operations management, social science:\nMarketing\nWrite a Literature Review section containing a few examples of the use of the topic in your chosen field that are particularly interesting to you:\nYou can find the literature review here.\nCreate a Quarto document or Jupyter notebook containing code that you wrote yourself which illustrates the application of the data structure or algorithm within your domain of interest, describing in your own words (through comments or Markdown text above/below the code) how the code works and what it does.\nOur data structure can be found here."
   },
